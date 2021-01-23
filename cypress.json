@@ -1,0 +1,7 @@
+{
+  "projectId": "",
+  "baseUrl": "http://localhost:3000/",
+  "env": {
+    "apiUrl": "https://fucer.com.ar/api/"
+  }
+}

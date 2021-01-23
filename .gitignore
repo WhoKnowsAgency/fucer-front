@@ -1,0 +1,20 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+
+sftp-config.json
+
+# Cypress
+cypress.env.json
+cypress/screenshots/*
+cypress/videos/*
+
+.DS_Store

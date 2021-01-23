@@ -1,0 +1,10 @@
+# Evita CORS
+[[redirects]]
+  from = "/api/*"
+  to = "https://fucer.com.ar/api/:splat"
+  status = 200
+
+# Evita redirigir recursos de NUXT
+[[redirects]]
+  from = "/_nuxt/*"
+  to = "/_nuxt/:splat"
