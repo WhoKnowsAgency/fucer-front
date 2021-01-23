@@ -33,6 +33,7 @@ module.exports = {
     "cypress",
   ],
   rules: {
+    "vue/comment-directive": 0,
     "no-secrets/no-secrets": "error",
     "vue/component-name-in-template-casing": ["error", "PascalCase"],
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
