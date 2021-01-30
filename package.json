@@ -25,6 +25,7 @@
   "dependencies": {
     "@nuxtjs/auth": "~4.9.1",
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/style-resources": "^1.0.0",
     "@sentry/browser": "^6.0.1",
     "@sentry/integrations": "^6.0.1",
     "@vue-a11y/announcer": "^2.1.0",
@@ -38,6 +39,7 @@
     "vue": "^2.6.12"
   },
   "devDependencies": {
+    "@aceforth/nuxt-optimized-images": "^1.4.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "axe-core": "4.1.1",
     "babel-eslint": "^10.1.0",

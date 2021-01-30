@@ -1,11 +1,11 @@
 export default {
-  ssr: true,
+  ssr: false,
 
   target: "static",
 
   components: true,
 
-  modern: true,
+  modern: false,
 
   generate: {
     fallback: "404.html",
@@ -41,6 +41,11 @@ export default {
 
   loading: { color: "#4ECDC4", height: "4px" },
 
+  // Docs: https://www.npmjs.com/package/@nuxtjs/style-resources
+  styleResources: {
+    less: ["~/assets/less/vars.less", "~/assets/less/fucer-theme.less"],
+  },
+
   // https://github.com/Developmint/nuxt-webfontloader
   webfontloader: {
     custom: {
@@ -52,7 +57,12 @@ export default {
     },
   },
 
-  modules: ["@nuxtjs/auth", "@nuxtjs/axios", "nuxt-webfontloader"],
+  modules: [
+    "@nuxtjs/auth",
+    "@nuxtjs/axios",
+    "nuxt-webfontloader",
+    "@nuxtjs/style-resources",
+  ],
 
   axios: {
     baseURL: `${process.env.DEPLOY_PRIME_URL || "https://fucer.com.ar"}/api/`,
@@ -103,29 +113,37 @@ export default {
   ],
 
   /*
+   ** Nuxt.js dev-modules
+   */
+  buildModules: [
+    // Docs: https://marquez.co/docs/nuxt-optimized-images/
+    [
+      "@aceforth/nuxt-optimized-images",
+      {
+        optimizeImages: true,
+      },
+    ],
+  ],
+
+  /*
    ** Build configuration
    */
   build: {
     devtools: true,
 
+    loaders: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true,
+          math: "always",
+        },
+      },
+    },
+
     /*
      ** Run ESLint on save
      */
     extend(config, ctx) {
-      config.module.rules.push({
-        test: /\.less$/,
-        use: [
-          {
-            loader: "less-loader",
-            options: {
-              lessOptions: {
-                javascriptEnabled: true,
-                math: "always",
-              },
-            },
-          },
-        ],
-      });
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: "pre",

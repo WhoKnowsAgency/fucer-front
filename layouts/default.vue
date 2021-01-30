@@ -5,12 +5,12 @@
     <ALayout>
       <SkipLinks />
       <ALayoutHeader>hea der</ALayoutHeader>
+
       <ALayout>
-        <ALayoutSider>left sidebar</ALayoutSider>
         <ALayoutContent><nuxt /></ALayoutContent>
-        <ALayoutSider>right sidebar</ALayoutSider>
       </ALayout>
-      <ALayoutFooter><TheFooter /></ALayoutFooter>
+
+      <TheFooter />
     </ALayout>
   </div>
 </template>
