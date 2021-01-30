@@ -36,7 +36,8 @@
     "focus-visible": "^5.2.0",
     "nuxt": "^2.14.12",
     "nuxt-webfontloader": "^1.1.0",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "webp-loader": "^0.6.0"
   },
   "devDependencies": {
     "@aceforth/nuxt-optimized-images": "^1.4.0",
