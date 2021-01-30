@@ -1,19 +1,22 @@
 <template>
   <div>
     <client-only><vue-announcer /></client-only>
-    <SkipLinks />
-    <lazy-error-toast />
-    <nuxt />
+
+    <ALayout>
+      <SkipLinks />
+      <ALayoutHeader>hea der</ALayoutHeader>
+      <ALayout>
+        <ALayoutSider>left sidebar</ALayoutSider>
+        <ALayoutContent><nuxt /></ALayoutContent>
+        <ALayoutSider>right sidebar</ALayoutSider>
+      </ALayout>
+      <ALayoutFooter><TheFooter /></ALayoutFooter>
+    </ALayout>
   </div>
 </template>
 
 <script>
-import SkipLinks from "~/components/SkipLinks.vue";
-
 export default {
-  components: {
-    SkipLinks,
-  },
   errorCaptured(error) {
     this.$store.dispatch("setPaginaError", error.toString());
     return false; // prevent Nuxt from handling the error

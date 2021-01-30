@@ -37,7 +37,7 @@ export default {
     ],
   },
 
-  // css: ["sass/main.sass"],
+  css: ["assets/less/main.less"],
 
   loading: { color: "#4ECDC4", height: "4px" },
 
@@ -99,6 +99,7 @@ export default {
     "~/plugins/sentry",
     { src: "~/plugins/utils", mode: "client" },
     { src: "~/plugins/axe", mode: "client" },
+    "~/plugins/ant-design-vue",
   ],
 
   /*
@@ -111,6 +112,20 @@ export default {
      ** Run ESLint on save
      */
     extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.less$/,
+        use: [
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                math: "always",
+              },
+            },
+          },
+        ],
+      });
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: "pre",
