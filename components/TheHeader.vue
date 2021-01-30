@@ -20,7 +20,26 @@
       <AMenuItem key="3">Institucional</AMenuItem>
       <AMenuItem key="4">Publicaciones</AMenuItem>
       <AMenuItem key="5">Contacto</AMenuItem>
-      <AMenuItem key="6"><AButton>Campus</AButton></AMenuItem>
+      <AMenuItem key="6">
+        <ABadge count="12" size="small">
+          <img
+            width="16"
+            height="22"
+            src="~/assets/img/icons/campana.svg"
+            alt=""
+          />
+        </ABadge>
+      </AMenuItem>
+      <AMenuItem key="7">
+        <div class="avatar">
+          <AAvatar
+            size="sm"
+            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          />
+          Ted Russell
+        </div>
+      </AMenuItem>
+      <AMenuItem key="8"><AButton>Campus</AButton></AMenuItem>
     </AMenu>
   </ALayoutHeader>
 </template>
@@ -44,6 +63,12 @@ a {
   position: absolute;
   left: 50px; // header padding-left
   top: 25px; // header padding-top
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  color: #262626;
 }
 
 .@{menu-prefix-cls} {
