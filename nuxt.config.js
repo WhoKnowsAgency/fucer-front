@@ -96,7 +96,7 @@ export default {
     "~/plugins/focus",
     { src: "~/plugins/announcer", mode: "client" },
     "~/plugins/filtros",
-    "~/plugins/sentry",
+    { src: "~/plugins/sentry", mode: "client" },
     { src: "~/plugins/utils", mode: "client" },
     { src: "~/plugins/axe", mode: "client" },
     "~/plugins/ant-design-vue",
