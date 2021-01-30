@@ -1,9 +1,50 @@
 <template>
-  <div></div>
+  <div>
+    <div class="hero">
+      <h1>Fundación Centro de Estudios Registrales</h1>
+      <p>
+        Especialización, capacitación, promoción y difusión del Derecho
+        Registral Argentino.
+      </p>
+      <div class="botonera">
+        <AButton type="primary">Cursos virtuales</AButton>
+        <AButton>Sobre FUCER</AButton>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+.hero {
+  max-width: 600px;
+  padding: 0 20px;
+  margin: 125px auto;
+  h1 {
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 54px;
+    color: @daybreak-blue-10;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  p {
+    font-size: 24px;
+    line-height: 32px;
+    color: @daybreak-blue-9;
+    text-align: center;
+    margin-bottom: 38px;
+  }
+  .botonera {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .@{btn-prefix-cls} {
+      margin: 0 10px 10px 10px;
+    }
+  }
+}
+</style>

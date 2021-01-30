@@ -33,6 +33,7 @@ export default {};
 .@{layout-prefix-cls}-header {
   color: @daybreak-blue-9;
   position: relative;
+  border-bottom: 1px solid @geek-blue-2;
 }
 
 a {
@@ -42,7 +43,7 @@ a {
 .logo {
   position: absolute;
   left: 50px; // header padding-left
-  top: 20px; // header padding-top
+  top: 25px; // header padding-top
 }
 
 .@{menu-prefix-cls} {
