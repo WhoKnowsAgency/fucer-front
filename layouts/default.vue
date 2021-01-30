@@ -4,7 +4,7 @@
 
     <ALayout>
       <SkipLinks />
-      <ALayoutHeader>hea der</ALayoutHeader>
+      <TheHeader />
 
       <ALayout>
         <ALayoutContent><nuxt /></ALayoutContent>

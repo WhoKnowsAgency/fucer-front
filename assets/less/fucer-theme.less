@@ -3,8 +3,37 @@
 // Ant Colors & Styles can be overwritten here. Just use the variable names from 
 // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
 
+// -------- Colors -----------
+@primary-color: @geek-blue;
+
 // Base Scaffolding Variables
 @font-family: Lora, Georgia, serif;
-  
+
 // Layout
-@layout-footer-background: @geek-blue;
+@layout-footer-background: @primary-color;
+@layout-header-background:white;
+@layout-header-height: 65px + 40px;
+@layout-header-padding: 20px 50px 20px (50px + 65px + 10px);
+
+// Buttons
+@btn-font-weight: 700;
+@btn-border-radius-base: 100px;
+@btn-border-radius-sm: @btn-border-radius-base;
+@btn-primary-color: #fff;
+@btn-primary-bg: @primary-color;
+@btn-default-color: @daybreak-blue-9;
+@btn-default-border: @daybreak-blue-9;
+
+@btn-padding-base: 8px @padding-lg - 1px;
+@btn-padding-lg: @btn-padding-base;
+@btn-padding-sm: 8px @padding-sm - 1px;
+
+@btn-height-base: 38px;
+@btn-height-lg: 46px;
+@btn-height-sm: 30px;
+
+
+// Menu
+// ---
+@menu-item-color: @daybreak-blue-9;
+@menu-highlight-color: @daybreak-blue-9;
