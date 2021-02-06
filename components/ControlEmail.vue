@@ -29,9 +29,9 @@
         </span>
       </template>
 
-      <p v-if="$slots.help" class="control-help">
+      <div v-if="$slots.help" class="control-help">
         <slot name="help"></slot>
-      </p>
+      </div>
     </div>
   </ValidationProvider>
 </template>

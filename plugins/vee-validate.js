@@ -35,23 +35,8 @@ extend("is_not", {
 
 extend("password", {
   validate: (value) => {
-    if (value.length > 256) {
-      return 'El campo "{_field_} debe tener menos de 256 caracteres';
-    }
     if (value.length < 8) {
-      return 'El campo "{_field_} debe tener al menos 8 caracteres';
-    }
-    if (!/\d/.test(value)) {
-      return 'El campo "{_field_} debe tener al menos un número';
-    }
-    if (!/[a-záéíñóúü]/.test(value)) {
-      return 'El campo "{_field_} debe tener al menos una letra minúscula';
-    }
-    if (!/[A-ZÁÉÍÑÓÚÜ]/.test(value)) {
-      return 'El campo "{_field_} debe tener al menos una letra mayúscula';
-    }
-    if (!/[~@#$%^&*+=`|{}:;!.?"()/[\]-_]/.test(value)) {
-      return 'El campo "{_field_} debe tener al menos algún caracter especial';
+      return 'El campo "{_field_}" debe tener al menos 8 caracteres';
     }
     return true;
   },

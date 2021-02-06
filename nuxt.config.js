@@ -48,6 +48,15 @@ export default {
     less: ["~/assets/less/vars.less", "~/assets/less/fucer-theme.less"],
   },
 
+  // Docs: https://www.npmjs.com/package/@nuxtjs/toast
+  toast: {
+    position: "bottom-center",
+    type: "success",
+    duration: 5000,
+    fullWidth: true,
+    fitToScreen: true,
+  },
+
   // https://github.com/Developmint/nuxt-webfontloader
   webfontloader: {
     custom: {
@@ -64,6 +73,7 @@ export default {
     "@nuxtjs/axios",
     "nuxt-webfontloader",
     "@nuxtjs/style-resources",
+    "@nuxtjs/toast",
   ],
 
   axios: {
@@ -82,7 +92,7 @@ export default {
       login: "/auth/login",
       logout: "/",
       callback: false,
-      home: "/",
+      home: "/campus",
     },
     cookie: {
       options: {
@@ -97,6 +107,7 @@ export default {
 
   plugins: [
     "~/plugins/axios",
+    "~/plugins/api",
     "~/plugins/focus",
     "~/plugins/vee-validate",
     { src: "~/plugins/announcer", mode: "client" },
@@ -106,6 +117,31 @@ export default {
     // { src: "~/plugins/axe", mode: "client" },
     "~/plugins/ant-design-vue",
   ],
+
+  router: {
+    middleware: ["auth"],
+    extendRoutes(routes) {
+      routes.splice(
+        0,
+        routes.length,
+        ...routes.map((route) => {
+          if (route.name === "auth-activar-cuenta") {
+            return {
+              ...route,
+              path: "/auth/activar-cuenta/:token",
+            };
+          }
+          if (route.name === "auth-cambiar-clave") {
+            return {
+              ...route,
+              path: "/auth/cambiar-clave/:token",
+            };
+          }
+          return route;
+        })
+      );
+    },
+  },
 
   /*
    ** Nuxt.js dev-modules

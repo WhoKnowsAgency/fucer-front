@@ -16,6 +16,8 @@
           :value="value"
           :type="mostrarClave ? 'text' : 'password'"
           :name="id"
+          size="large"
+          :placeholder="label"
           v-bind="$attrs"
           @input="$emit('input', $event.target.value)"
         >
@@ -36,9 +38,9 @@
         </span>
       </template>
 
-      <p v-if="$slots.help" class="control-help">
+      <div v-if="$slots.help" class="control-help">
         <slot name="help"></slot>
-      </p>
+      </div>
     </div>
   </ValidationProvider>
 </template>
@@ -76,11 +78,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "~assets/less/components/control-error";
 @import "~assets/less/components/control-help";
-// @import '~assets/less/components/controls';
-.control-error + .control-help {
-  margin-top: 10px;
-}
+@import "~assets/less/components/controls";
 </style>

@@ -2,15 +2,19 @@
   <ValidationProvider v-slot="{ errors }" :rules="rules" :name="label">
     <div class="control">
       <div class="control-input" :class="errors.length ? 'has-error' : false">
-        <label :for="id">{{ label }}</label>
-        <input
+        <label class="sr-only" :for="id">{{ label }}</label>
+        <a-input
           :id="id"
           :value="value"
           type="text"
+          size="large"
           :name="id"
+          :placeholder="label"
           v-bind="$attrs"
           @input="handleInput($event.target.value)"
-        />
+        >
+          <a-icon v-if="icon" slot="prefix" :type="icon" />
+        </a-input>
       </div>
 
       <template v-if="errors.length">
@@ -19,9 +23,9 @@
         </span>
       </template>
 
-      <p v-if="$slots.help" class="control-help">
+      <div v-if="$slots.help" class="control-help">
         <slot name="help"></slot>
-      </p>
+      </div>
     </div>
   </ValidationProvider>
 </template>
@@ -46,6 +50,10 @@ export default {
       type: String,
       default: "",
     },
+    icon: {
+      type: [String, Boolean],
+      default: false,
+    },
     mask: {
       type: [Function, Boolean],
       default: false,
@@ -62,15 +70,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "~assets/less/components/control-error";
 @import "~assets/less/components/control-help";
-// @import '~assets/less/components/controls';
-.control-help {
-  color: black;
-  font-size: 14px;
-  .control-error + & {
-    display: none;
-  }
-}
+@import "~assets/less/components/controls";
 </style>

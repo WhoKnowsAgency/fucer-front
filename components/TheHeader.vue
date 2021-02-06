@@ -20,27 +20,29 @@
       <AMenuItem key="3">Institucional</AMenuItem>
       <AMenuItem key="4">Publicaciones</AMenuItem>
       <AMenuItem key="5">Contacto</AMenuItem>
-      <AMenuItem key="6">
-        <ABadge count="12" size="small">
-          <img
-            width="16"
-            height="22"
-            src="~/assets/img/icons/campana.svg"
-            alt=""
-          />
-        </ABadge>
-      </AMenuItem>
-      <AMenuItem key="7">
-        <div class="avatar">
-          <AAvatar
-            size="small"
-            alt=""
-            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          />
-          Ted Russell
-        </div>
-      </AMenuItem>
-      <AMenuItem key="8"><AButton>Campus</AButton></AMenuItem>
+      <template v-if="$auth.loggedIn">
+        <AMenuItem key="6">
+          <ABadge count="12" size="small">
+            <img
+              width="16"
+              height="22"
+              src="~/assets/img/icons/campana.svg"
+              alt=""
+            />
+          </ABadge>
+        </AMenuItem>
+        <AMenuItem key="7">
+          <div class="avatar">
+            <AAvatar
+              size="small"
+              alt=""
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+            Ted Russell
+          </div>
+        </AMenuItem>
+        <AMenuItem key="8"><AButton>Campus</AButton></AMenuItem>
+      </template>
     </AMenu>
   </ALayoutHeader>
 </template>

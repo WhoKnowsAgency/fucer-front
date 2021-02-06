@@ -1,12 +1,21 @@
 <template>
   <div>
     <div class="box">
-      <h1>Ingresá al campus</h1>
+      <h1>Creá tu cuenta</h1>
       <ValidationObserver v-slot="{ handleSubmit }">
         <form method="post" @submit.prevent="handleSubmit(onSubmit)">
           <p v-show="error" ref="error" tabindex="-1" class="form-error">
             {{ error }}
           </p>
+
+          <ControlText
+            id="nombre"
+            v-model="nombre"
+            label="Nombre"
+            icon="user"
+            rules="required"
+            autocomplete="given-name"
+          />
 
           <ControlEmail
             id="email"
@@ -22,20 +31,9 @@
             id="clave"
             v-model="clave"
             label="Clave"
-            rules="required"
-            autocomplete="password"
-          >
-            <template #help>
-              <NuxtLink
-                :to="`/auth/recuperar-clave${
-                  email ? '?email=' + encodeURIComponent(email) : ''
-                }`"
-              >
-                Olvidé mi clave
-              </NuxtLink>
-            </template>
-            <template #error>La contraseña ingresada es incorrecta</template>
-          </ControlPassword>
+            rules="required|password"
+            autocomplete="new-password"
+          />
 
           <a-button
             html-type="submit"
@@ -47,8 +45,8 @@
             {{ txtSubmit }}
           </a-button>
           <div class="form-help">
-            ¿No tenés cuenta?
-            <NuxtLink to="/auth/crear-cuenta"> Registrate</NuxtLink>
+            ¿Ya tenés cuenta?
+            <NuxtLink to="/auth/login"> Ingresá</NuxtLink>
           </div>
         </form>
       </ValidationObserver>
@@ -61,24 +59,21 @@ export default {
   auth: false,
   data() {
     return {
-      email: this.$route.query.email || "",
+      email: "",
       clave: "",
+      nombre: "",
       error: "",
       status: "stale",
     };
   },
   computed: {
     txtSubmit() {
-      return this.status === "pending" ? "procesando..." : "Ingresar";
+      return this.status === "pending" ? "procesando..." : "Registrarme";
     },
   },
   methods: {
-    setError(error) {
-      this.status = "error";
-      this.error = error;
-      this.$nextTick(() => this.$refs.error.focus());
-    },
     async onSubmit() {
+      this.error = "";
       if (this.$nuxt.isOffline) {
         this.setError(
           "No pudimos conectarnos con el servidor. Comprobá tu conexión a internet y volvé a intentar."
@@ -87,23 +82,26 @@ export default {
       }
       try {
         this.status = "pending";
-        await this.$auth.login({
-          data: {
-            username: this.email,
-            password: this.clave,
-          },
+        await this.$api.auth.crearCuenta({
+          nombre: this.nombre,
+          email: this.email,
+          password: this.clave,
         });
-        this.$router.push("/campus");
+        this.$toast.show("Enviamos un mail para activar tu cuenta.");
         this.status = "stale";
       } catch (err) {
-        console.error(err);
         this.setError(err);
       }
+    },
+    setError(error) {
+      this.status = "error";
+      this.error = error;
+      this.$nextTick(() => this.$refs.error.focus());
     },
   },
   head() {
     return {
-      title: "Ingresá al campus",
+      title: "Creá tu cuenta",
     };
   },
 };
@@ -112,5 +110,4 @@ export default {
 <style lang="less">
 @import "~assets/less/components/box";
 @import "~assets/less/components/form-error";
-@import "~assets/less/components/form-help";
 </style>

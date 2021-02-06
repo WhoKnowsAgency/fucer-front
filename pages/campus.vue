@@ -1,25 +1,23 @@
 <template>
   <div>
     <div class="hero">
-      <h1>Fundación Centro de Estudios Registrales</h1>
-      <p>
-        Especialización, capacitación, promoción y difusión del Derecho
-        Registral Argentino.
-      </p>
-      <div class="botonera">
-        <AButton type="primary">
-          <NuxtLink to="/campus">Cursos virtuales</NuxtLink>
-        </AButton>
-        <AButton>Sobre FUCER</AButton>
-      </div>
+      <h1>Campus</h1>
+      <a-button
+        :loading="status === 'pending'"
+        type="primary"
+        shape="round"
+        block
+        @click="$auth.logout()"
+        @keyup.enter="$auth.logout()"
+      >
+        Cerrar sesión
+      </a-button>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  auth: false,
-};
+export default {};
 </script>
 
 <style lang="less">
