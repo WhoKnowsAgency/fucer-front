@@ -33,7 +33,8 @@
       <AMenuItem key="7">
         <div class="avatar">
           <AAvatar
-            size="sm"
+            size="small"
+            alt=""
             src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
           />
           Ted Russell

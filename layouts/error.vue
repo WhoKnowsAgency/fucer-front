@@ -6,7 +6,7 @@
       <div class="container">
         <h1 ref="pageFocusTarget" class="intro__heading">Error - 404</h1>
         <p>La página que está buscando no existe</p>
-        <nuxt-link :to="{ name: 'inicio' }" class="rounded__btn--full white">
+        <nuxt-link to="/" class="rounded__btn--full white">
           Volver a Inicio
         </nuxt-link>
       </div>
@@ -38,9 +38,6 @@ export default {
   head() {
     return {
       title: this.title,
-      bodyAttrs: {
-        class: "bg__gradient",
-      },
     };
   },
 };

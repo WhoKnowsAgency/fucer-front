@@ -1,0 +1,50 @@
+.control {
+  margin-bottom: 12px;
+}
+.control + .control {
+  margin-bottom: 0;
+}
+.control + .btn {
+  margin-top: 0;
+}
+.control-input {
+  position: relative;
+  input,
+  textarea,
+  select {
+    width: 100%;
+    height: 56px;
+    background: #ffffff;
+    border: 1px solid black;
+    padding: 0 1em;
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 19px;
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+  &.has-error {
+    &:not(.select):not(.textarea)::after {
+      content: '';
+      display: inline-block;
+      width: 1.3em;
+      height: 1.3em;
+      position: absolute;
+      top: 50%;
+      right: 0.7em;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      // background: url('~assets/icons/Error.svg?inline') center no-repeat;
+      background-size: 100%;
+    }
+    input,
+    textarea,
+    select {
+      border: 1px solid @error-color;
+      box-shadow: none;
+      padding-right: 2.3em;
+    }
+  }
+}

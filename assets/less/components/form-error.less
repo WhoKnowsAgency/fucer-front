@@ -1,0 +1,26 @@
+.form-error {
+  display: block;
+  color: @error-color;
+  font-size: 13px;
+  line-height: 16px;
+  padding-left: 1.75em;
+  margin: .5em 0;
+  position: relative;
+  text-align: left;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: url('~assets/img/icons/Error.svg?inline') center no-repeat;
+    background-size: 100%;
+  }
+  &:focus {
+    border: 0;
+    outline: 0;
+  }
+}

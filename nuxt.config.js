@@ -22,6 +22,8 @@ export default {
       lang: "es",
     },
     meta: [
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
@@ -65,38 +67,30 @@ export default {
   ],
 
   axios: {
-    baseURL: `${process.env.DEPLOY_PRIME_URL || "https://fucer.com.ar"}/api/`,
+    debug: true,
+    proxy: true,
+  },
+
+  proxy: {
+    "/api/": {
+      target: "https://www.fucer.com.ar/",
+    },
   },
 
   auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: "/auth/login", method: "post", propertyName: "token" },
-          logout: { url: "/auth/logout", method: "post" },
-          user: { url: "/auth/user", method: "get", propertyName: "user" },
-          refreshToken: {
-            url: "/auth/refresh-token",
-            method: "get",
-            propertyName: "token",
-          },
-        },
-        refresh_token_key: "refresh_token",
-      },
-    },
     redirect: {
-      login: "/login",
+      login: "/auth/login",
       logout: "/",
-      callback: "/login",
-      home: "/inicio",
+      callback: false,
+      home: "/",
     },
     cookie: {
       options: {
         domain: process.env.DEPLOY_PRIME_URL
           ? process.env.DEPLOY_PRIME_URL.replace("https://", "")
-          : "net.fucer.com.ar",
+          : "localhost",
         secure: process.env.NODE_ENV === "production",
-        samesite: process.env.NODE_ENV !== "production" ? "None" : "Strict",
+        samesite: "Strict",
       },
     },
   },
@@ -104,11 +98,12 @@ export default {
   plugins: [
     "~/plugins/axios",
     "~/plugins/focus",
+    "~/plugins/vee-validate",
     { src: "~/plugins/announcer", mode: "client" },
     "~/plugins/filtros",
     { src: "~/plugins/sentry", mode: "client" },
     { src: "~/plugins/utils", mode: "client" },
-    { src: "~/plugins/axe", mode: "client" },
+    // { src: "~/plugins/axe", mode: "client" },
     "~/plugins/ant-design-vue",
   ],
 
@@ -139,6 +134,9 @@ export default {
         },
       },
     },
+
+    // https://logaretm.github.io/vee-validate/guide/rules.html#importing-rules-in-nuxt-js
+    transpile: ["vee-validate/dist/rules", "@nuxtjs/auth"],
 
     /*
      ** Run ESLint on save
