@@ -1,118 +1,123 @@
 <template>
   <ALayoutFooter class="pie">
-    <div class="pie_contenido-principal">
-      <div class="pie_descripcion">
-        <picture>
-          <source
-            :srcSet="require('assets/img/fucer.x2.png?webp')"
-            type="image/webp"
-          />
-          <source :srcSet="require('assets/img/fucer.png')" type="image/png" />
-          <img
-            width="65"
-            height="65"
-            class="logo"
-            src="~assets/img/fucer.png"
-            srcset="~assets/img/fucer.x2.png 2x"
-            alt="Logo de Fucer"
-          />
-        </picture>
-        <h1>Fundación Centro de Estudios Registrales</h1>
-        <p>
-          Especialización, capacitación, promoción y
-          <br />difusión del Derecho Registral Argentino.
-        </p>
-      </div>
-
-      <div class="pie_navegacion">
-        <nav class="menu">
-          <ul>
-            <li>
-              <a href="">Inicio</a>
-            </li>
-            <li>
-              <a href="">Cursos activos</a>
-            </li>
-            <li>
-              <a href="">Cursos finalizados</a>
-            </li>
-            <li>
-              <a href="">Campus virtual</a>
-            </li>
-            <li>
-              <a href="">Institucional</a>
-            </li>
-            <li>
-              <a href="">Publicaciones</a>
-            </li>
-            <li>
-              <a href="">Contacto</a>
-            </li>
-            <li>
-              <a href="">FucerNet</a>
-            </li>
-          </ul>
-        </nav>
-
-        <nav class="redes">
-          <ul>
-            <li>
-              <!-- TODO: cambiar FB -->
-              <a
-                class="redes-icono es-facebook"
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span class="sr-only">Facebook</span>
-              </a>
-            </li>
-            <!-- TODO: cambiar YT -->
-            <li>
-              <a
-                class="redes-icono es-youtube"
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span class="sr-only">YouTube</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <ADivider class="divider" />
-
-    <div class="pie_contenido-secundario">
-      <address
-        class="direccion"
-        itemscope
-        itemtype="http://schema.org/LocalBusiness"
-      >
-        <div class="address-item">
-          <a itemprop="telephone" href="tel:01139886729">(011) 3988 6729</a>
+    <div class="container">
+      <div class="pie_contenido-principal">
+        <div class="pie_descripcion">
+          <picture>
+            <source
+              :srcSet="require('assets/img/fucer.x2.png?webp')"
+              type="image/webp"
+            />
+            <source
+              :srcSet="require('assets/img/fucer.png')"
+              type="image/png"
+            />
+            <img
+              width="65"
+              height="65"
+              class="logo"
+              src="~assets/img/fucer.png"
+              srcset="~assets/img/fucer.x2.png 2x"
+              alt="Logo de Fucer"
+            />
+          </picture>
+          <h1>Fundación Centro de Estudios Registrales</h1>
+          <p>
+            Especialización, capacitación, promoción y
+            <br />difusión del Derecho Registral Argentino.
+          </p>
         </div>
-        <div
-          class="direccion-item"
+
+        <div class="pie_navegacion">
+          <nav class="menu">
+            <ul>
+              <li>
+                <a href="">Inicio</a>
+              </li>
+              <li>
+                <a href="">Cursos activos</a>
+              </li>
+              <li>
+                <a href="">Cursos finalizados</a>
+              </li>
+              <li>
+                <a href="">Campus virtual</a>
+              </li>
+              <li>
+                <a href="">Institucional</a>
+              </li>
+              <li>
+                <a href="">Publicaciones</a>
+              </li>
+              <li>
+                <a href="">Contacto</a>
+              </li>
+              <li>
+                <a href="">FucerNet</a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav class="redes">
+            <ul>
+              <li>
+                <!-- TODO: cambiar FB -->
+                <a
+                  class="redes-icono es-facebook"
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="sr-only">Facebook</span>
+                </a>
+              </li>
+              <!-- TODO: cambiar YT -->
+              <li>
+                <a
+                  class="redes-icono es-youtube"
+                  href="https://www.youtube.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="sr-only">YouTube</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <ADivider class="divider" />
+
+      <div class="pie_contenido-secundario">
+        <address
+          class="direccion"
           itemscope
-          itemprop="address"
-          itemtype="http://schema.org/PostalAddress"
+          itemtype="http://schema.org/LocalBusiness"
         >
-          <span itemprop="streetAddress"> Moreno 431</span>,
-          <span itemprop="addressLocality">CABA</span>
-        </div>
-        <div class="direccion-item">
-          <a itemprop="email" href="mailto:administracion@fucer.com.ar">
-            administracion@fucer.com.ar
-          </a>
-        </div>
-      </address>
+          <div class="address-item">
+            <a itemprop="telephone" href="tel:01139886729">(011) 3988 6729</a>
+          </div>
+          <div
+            class="direccion-item"
+            itemscope
+            itemprop="address"
+            itemtype="http://schema.org/PostalAddress"
+          >
+            <span itemprop="streetAddress"> Moreno 431</span>,
+            <span itemprop="addressLocality">CABA</span>
+          </div>
+          <div class="direccion-item">
+            <a itemprop="email" href="mailto:administracion@fucer.com.ar">
+              administracion@fucer.com.ar
+            </a>
+          </div>
+        </address>
 
-      <small class="legales"
-        >© 2021 Fundación Centro de Estudios Registrales</small
-      >
+        <small class="legales"
+          >© 2021 Fundación Centro de Estudios Registrales</small
+        >
+      </div>
     </div>
   </ALayoutFooter>
 </template>

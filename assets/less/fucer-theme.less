@@ -5,7 +5,7 @@
 
 // -------- Colors -----------
 @primary-color: @geek-blue;
-@icon-color: @primary-color;
+@icon-color: inherit;
 
 // Base Scaffolding Variables
 @body-background: @geek-blue-1;
@@ -23,14 +23,13 @@
 // Layout
 @layout-body-background: @geek-blue-1;
 @layout-footer-background: @primary-color;
+@layout-footer-padding: 24px 0;
 @layout-header-background: @geek-blue-1;
 @layout-header-height: 65px + 50px;
-@layout-header-padding: 25px 50px 25px (50px + 65px + 10px);
+@layout-header-padding: 25px 0;
 
 // Buttons
 @btn-font-weight: 700;
-@btn-border-radius-base: 100px;
-@btn-border-radius-sm: @btn-border-radius-base;
 @btn-primary-color: #fff;
 @btn-primary-bg: @daybreak-blue-8;
 @btn-default-color: @daybreak-blue-9;
@@ -71,3 +70,7 @@
 @input-height-base: @height-base;
 @input-height-lg: @height-lg;
 @input-height-sm: @height-sm;
+
+.ant-btn-sm {
+    line-height: 1;
+}

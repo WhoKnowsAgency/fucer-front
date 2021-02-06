@@ -7,10 +7,10 @@
         Registral Argentino.
       </p>
       <div class="botonera">
-        <AButton type="primary">
+        <AButton shape="round" type="primary">
           <NuxtLink to="/campus">Cursos virtuales</NuxtLink>
         </AButton>
-        <AButton>Sobre FUCER</AButton>
+        <AButton shape="round">Sobre FUCER</AButton>
       </div>
     </div>
   </div>
