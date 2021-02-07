@@ -8,13 +8,12 @@
         </h1>
 
         <div class="botonera">
-          <AButton type="dashed" shape="default" size="small">
+          <AButton type="dashed" size="small">
             Inscribirme a un curso
             <AIcon type="plus-circle" />
           </AButton>
 
           <AButton
-            :loading="status === 'pending'"
             type="primary"
             size="small"
             @click="$auth.logout()"
@@ -27,8 +26,13 @@
 
       <ATabs default-active-key="activos" @change="cargarCursos">
         <ATabPane key="activos" tab="Cursos activos">
-          <p v-if="cursos.length === 0">No tenés cursos activos.</p>
-          <ACard v-for="curso in cursos" :key="curso.id" class="card" hoverable>
+          <p v-if="cursosActivos.length === 0">No tenés cursos activos.</p>
+          <ACard
+            v-for="curso in cursosActivos"
+            :key="curso.id"
+            class="card"
+            hoverable
+          >
             <h3>{{ curso.nombre }}</h3>
             <AButton class="btn" type="primary" shape="round">
               <NuxtLink to="/curso">
@@ -38,11 +42,18 @@
           </ACard>
         </ATabPane>
         <ATabPane key="finalizados" tab="Cursos finalizados">
-          <p v-if="cursos.length === 0">No tenés cursos finalizados.</p>
-          <ACard v-for="curso in cursos" :key="curso.id" class="card" hoverable>
+          <p v-if="cursosFinalizados.length === 0">
+            No tenés cursos finalizados.
+          </p>
+          <ACard
+            v-for="curso in cursosFinalizados"
+            :key="curso.id"
+            class="card"
+            hoverable
+          >
             <h3>{{ curso.nombre }}</h3>
             <AButton class="btn" type="primary" shape="round">
-              <NuxtLink to="/curso">
+              <NuxtLink :to="curso.url">
                 Abrir <AIcon type="arrow-right" />
               </NuxtLink>
             </AButton>
@@ -55,18 +66,21 @@
 
 <script>
 export default {
-  data() {
-    return {
-      cursos: [],
-    };
+  computed: {
+    cursosActivos() {
+      return this.$store.getters["cursos/activos"];
+    },
+    cursosFinalizados() {
+      return this.$store.getters["cursos/finalizados"];
+    },
   },
   async created() {
-    this.cursos = await this.cargarCursos("activos");
+    await this.cargarCursos();
   },
   methods: {
-    async cargarCursos(activeKey) {
-      const finalizados = activeKey === "finalizados";
-      this.cursos = await this.$api.cursos.usuario(finalizados);
+    async cargarCursos() {
+      await this.$store.dispatch("cursos/getActivos");
+      this.$store.dispatch("cursos/getFinalizados");
     },
   },
 };

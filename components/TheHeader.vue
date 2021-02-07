@@ -45,7 +45,11 @@
               {{ $auth.user.nombre }}
             </div>
           </AMenuItem>
-          <AMenuItem key="8"><AButton>Campus</AButton></AMenuItem>
+          <AMenuItem key="8">
+            <AButton>
+              <NuxtLink to="/campus">Campus</NuxtLink>
+            </AButton>
+          </AMenuItem>
         </template>
       </AMenu>
     </div>

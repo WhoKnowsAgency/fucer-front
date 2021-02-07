@@ -121,6 +121,7 @@ export default {
   router: {
     middleware: ["auth"],
     extendRoutes(routes) {
+      console.log(routes);
       routes.splice(
         0,
         routes.length,
@@ -129,6 +130,13 @@ export default {
             return {
               ...route,
               path: "/auth/activar-cuenta/:token",
+            };
+          }
+          if (route.name === "curso-id") {
+            return {
+              ...route,
+              name: "curso",
+              path: "/curso/:id/:slug?",
             };
           }
           if (route.name === "auth-cambiar-clave") {
