@@ -35,7 +35,7 @@
           >
             <h3>{{ curso.nombre }}</h3>
             <AButton class="btn" type="primary" shape="round">
-              <NuxtLink to="/curso">
+              <NuxtLink :to="curso.url">
                 Abrir <AIcon type="arrow-right" />
               </NuxtLink>
             </AButton>
