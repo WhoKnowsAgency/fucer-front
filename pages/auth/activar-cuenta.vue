@@ -26,7 +26,7 @@
         shape="round"
         block
       >
-        <NuxtLink to="/auth/login"> Accedé al campus </NuxtLink>
+        <NuxtLink to="/campus"> Accedé al campus </NuxtLink>
       </a-button>
     </div>
   </div>
@@ -65,8 +65,7 @@ export default {
         this.status = "stale";
 
         // Loggea automáticamente al usuario
-        this.$auth.setToken("local", "Bearer " + token);
-        await this.$auth.fetchUser();
+        await this.$auth.setUserToken(token);
 
         this.mensaje =
           "¡Bienvenido, " +
