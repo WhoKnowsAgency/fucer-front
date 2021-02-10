@@ -1,7 +1,7 @@
 <template>
   <div class="activar-cuenta">
     <div class="box">
-      <h1>Activá tu cuenta</h1>
+      <h1>{{ titulo }}</h1>
 
       <p v-show="error" ref="error" tabindex="-1" class="form-error">
         {{ error }}
@@ -40,6 +40,7 @@ export default {
   },
   data() {
     return {
+      titulo: "Activá tu cuenta",
       mensaje: "Procesando...",
       error: "",
       status: "stale",
@@ -67,10 +68,8 @@ export default {
         // Loggea automáticamente al usuario
         await this.$auth.setUserToken(token);
 
-        this.mensaje =
-          "¡Bienvenido, " +
-          this.$auth.user.nombre +
-          "!<br><br> Tu email ha sido confirmado.";
+        this.titulo = "¡Bienvenido, " + this.$auth.user.nombre + "!";
+        this.mensaje = "Tu email ha sido confirmado.";
         if (process.client) this.$announcer.set(this.mensaje);
       } catch (e) {
         this.status = "error";
