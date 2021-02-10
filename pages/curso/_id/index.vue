@@ -66,34 +66,34 @@ export default {
       if (this.curso.enlace_zoom) {
         enlaces.push({
           nombre: `Acceso a Zoom`,
-          to: `zoom`,
+          to: `${this.curso.id}/zoom`,
         });
       }
 
       if (this.curso.materiales && this.curso.materiales.length) {
         enlaces.push({
           nombre: `Material`,
-          to: `material`,
+          to: `${this.curso.id}/material`,
         });
       }
 
       if (this.curso.clase && this.curso.clases.length) {
         enlaces.push({
           nombre: `Grabaciones`,
-          to: `grabaciones`,
+          to: `${this.curso.id}/grabaciones`,
         });
       }
 
       if (this.curso.comentarios) {
         enlaces.push({
           nombre: `Comentarios`,
-          to: `comentarios`,
+          to: `${this.curso.id}/comentarios`,
         });
       }
 
       enlaces.push({
         nombre: `Certificado`,
-        to: `certificado`,
+        to: `${this.curso.id}/certificado`,
       });
 
       return enlaces;
