@@ -59,10 +59,9 @@ const normalizarCursos = (cursos) => {
   return cursos.map((item) => ({
     ...item,
     url: {
-      name: "curso",
+      name: "curso-id",
       params: {
         id: item.id,
-        slug: decodeURIComponent(item.uri),
       },
     },
   }));

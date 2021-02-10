@@ -10,17 +10,27 @@
         </ABreadcrumbItem>
         <ABreadcrumbItem>Curso</ABreadcrumbItem>
       </ABreadcrumb>
+
       <div>
         <h1>{{ curso.nombre }}</h1>
+
+        <!-- eslint-disable vue/no-v-html -->
+        <div
+          v-if="curso.info_campus"
+          class="card-info"
+          v-html="curso.info_campus"
+        />
+        <!-- eslint-enable vue/no-v-html -->
+
         <ARow :gutter="[24, 24]">
           <ACol v-for="enlace in enlaces" :key="enlace.nombre" span="12">
             <ACard class="card" hoverable>
-              <h3>{{ enlace.nombre }}</h3>
-              <AButton class="btn" type="dashed" shape="circle">
-                <NuxtLink :to="enlace.to">
+              <NuxtLink :to="enlace.to">
+                <h3>{{ enlace.nombre }}</h3>
+                <AButton class="btn" type="dashed" shape="circle">
                   <AIcon type="arrow-right" />
-                </NuxtLink>
-              </AButton>
+                </AButton>
+              </NuxtLink>
             </ACard>
           </ACol>
         </ARow>
@@ -48,29 +58,46 @@ export default {
       curso: {
         id: 0,
       },
-      enlaces: [
-        {
+    };
+  },
+  computed: {
+    enlaces() {
+      let enlaces = [];
+      if (this.curso.enlace_zoom) {
+        enlaces.push({
           nombre: `Acceso a Zoom`,
           to: `zoom`,
-        },
-        {
+        });
+      }
+
+      if (this.curso.materiales && this.curso.materiales.length) {
+        enlaces.push({
           nombre: `Material`,
           to: `material`,
-        },
-        {
+        });
+      }
+
+      if (this.curso.clase && this.curso.clases.length) {
+        enlaces.push({
           nombre: `Grabaciones`,
           to: `grabaciones`,
-        },
-        {
+        });
+      }
+
+      if (this.curso.comentarios) {
+        enlaces.push({
           nombre: `Comentarios`,
           to: `comentarios`,
-        },
-        {
-          nombre: `Certificado`,
-          to: `certificado`,
-        },
-      ],
-    };
+        });
+      }
+
+      enlaces.push({
+        nombre: `Certificado`,
+        to: `certificado`,
+      });
+
+      return enlaces;
+    },
   },
   head() {
     return {
@@ -91,8 +118,15 @@ h1 {
   font-size: 30px;
   line-height: 38px;
   margin-top: 16px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   color: @daybreak-blue-10;
+}
+
+.card-info {
+  padding: 24px;
+  margin-bottom: 24px;
+  color: @daybreak-blue-10;
+  border: 1px solid #e8e8e8;
 }
 
 .card {

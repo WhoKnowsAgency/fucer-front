@@ -132,13 +132,6 @@ export default {
               path: "/auth/activar-cuenta/:token",
             };
           }
-          if (route.name === "curso-id") {
-            return {
-              ...route,
-              name: "curso",
-              path: "/curso/:id/:slug?",
-            };
-          }
           if (route.name === "auth-cambiar-clave") {
             return {
               ...route,
