@@ -12,15 +12,6 @@
             Inscribirme a un curso
             <AIcon type="plus-circle" />
           </AButton>
-
-          <AButton
-            type="primary"
-            size="small"
-            @click="$auth.logout()"
-            @keyup.enter="$auth.logout()"
-          >
-            Cerrar sesión
-          </AButton>
         </div>
       </div>
 

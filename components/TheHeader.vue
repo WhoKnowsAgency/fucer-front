@@ -36,17 +36,40 @@
             </ABadge>
           </AMenuItem>
           <AMenuItem key="7">
-            <div class="avatar">
-              <AAvatar
-                size="small"
-                alt=""
-                :src="$auth.user.foto && $auth.user.foto.src"
-              />
-              {{ $auth.user.nombre }}
-            </div>
+            <ADropdown>
+              <a href="#profile" class="avatar ant-dropdown-link">
+                <AAvatar
+                  size="small"
+                  alt=""
+                  :src="$auth.user.foto && $auth.user.foto.src"
+                />
+                {{ $auth.user.nombre }}
+              </a>
+              <AMenu id="profile" slot="overlay">
+                <AMenuItem key="0">
+                  <NuxtLink to="/"><AIcon type="home" /> Inicio </NuxtLink>
+                </AMenuItem>
+                <AMenuItem key="1">
+                  <NuxtLink to="/configuracion"
+                    ><AIcon type="setting" /> Configuración
+                  </NuxtLink>
+                </AMenuItem>
+                <AMenuItem key="2">
+                  <a
+                    href="#logout"
+                    @click="$auth.logout()"
+                    @keyup.enter="$auth.logout()"
+                  >
+                    <AIcon type="poweroff" /> Cerrar sesión
+                  </a>
+                </AMenuItem>
+              </AMenu>
+            </ADropdown>
           </AMenuItem>
+        </template>
+        <template v-else>
           <AMenuItem key="8">
-            <AButton>
+            <AButton type="round">
               <NuxtLink to="/campus">Campus</NuxtLink>
             </AButton>
           </AMenuItem>
