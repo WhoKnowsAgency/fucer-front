@@ -22,7 +22,12 @@
             <ACard class="card" hoverable>
               <h3>{{ clase.nombre }}</h3>
               <AButton class="btn" type="dashed" shape="circle">
-                <NuxtLink :to="{ name: 'clase', params: { id: clase.id } }">
+                <NuxtLink
+                  :to="{
+                    name: 'curso-id-clase-clase_id',
+                    params: { id: curso.id, clase_id: clase.id },
+                  }"
+                >
                   <AIcon type="arrow-right" />
                 </NuxtLink>
               </AButton>

@@ -77,7 +77,7 @@ export default {
         });
       }
 
-      if (this.curso.clase && this.curso.clases.length) {
+      if (this.curso.clases && this.curso.clases.length) {
         enlaces.push({
           nombre: `Grabaciones`,
           to: `${this.curso.id}/grabaciones`,
