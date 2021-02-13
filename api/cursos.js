@@ -11,4 +11,9 @@ export default ($axios) => ({
   async getById(id) {
     return await $axios.$get(`api/${resource}/${id}`);
   },
+  async comentariosClase(cursoId, claseId) {
+    return await $axios.$get(
+      `api/${resource}/${cursoId}/${claseId}/comentarios`
+    );
+  },
 });
