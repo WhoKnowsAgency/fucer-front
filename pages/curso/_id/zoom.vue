@@ -16,14 +16,14 @@
           En esta página podés consultar los accesos al Zoom del curso.
           <template v-if="curso.enlace_instructivo"
             >Si lo necesitás, podés también ver el
-            <NuxtLink :to="curso.enlace_instructivo">instructivo</NuxtLink> en
-            caso de que nunca hayas usado Zoom.
+            <a :href="curso.enlace_instructivo">instructivo</a> en caso de que
+            nunca hayas usado Zoom.
           </template>
         </p>
 
         <p class="card-info">
           - Podés acceder al aula virtual de Zoom
-          <NuxtLink :to="curso.enlace_zoom">en este link</NuxtLink><br />
+          <a :href="curso.enlace_zoom">en este link</a><br />
           - Podés acceder también ingresando a Zoom, y luego colocando el ID 875
           653 321 22<br />
           <template v-if="curso.clave_zoom">
