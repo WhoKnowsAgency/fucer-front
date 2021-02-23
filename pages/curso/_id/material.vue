@@ -19,7 +19,7 @@
             span="12"
           >
             <ACard class="card" hoverable>
-              <a :href="material.pdf" download>
+              <a :href="material.pdf" target="_blank">
                 <h3>{{ material.nombre }}</h3>
                 <AButton class="btn" type="dashed" shape="circle">
                   <AIcon type="arrow-right" />
