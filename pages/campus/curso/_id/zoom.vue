@@ -6,49 +6,42 @@
           <NuxtLink to="/campus">Campus</NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>
-          <NuxtLink :to="curso.url">Curso</NuxtLink>
+          <NuxtLink :to="`/campus/curso/${curso.id}`"> Curso </NuxtLink>
         </ABreadcrumbItem>
-        <ABreadcrumbItem>Grabaciones</ABreadcrumbItem>
+        <ABreadcrumbItem>Acceso a Zoom</ABreadcrumbItem>
       </ABreadcrumb>
       <div>
-        <h1>Grabaciones</h1>
+        <h1>Acceso a Zoom</h1>
         <p class="intro">
-          Cada clase de este curso se graba y luego se habilita en esta página.
-          Podrás ver las grabaciones de forma asincrónica, durante el plazo de
-          cursada.
+          En esta página podés consultar los accesos al Zoom del curso.
+          <template v-if="curso.enlace_instructivo"
+            >Si lo necesitás, podés también ver el
+            <a :href="curso.enlace_instructivo">instructivo</a> en caso de que
+            nunca hayas usado Zoom.
+          </template>
         </p>
-        <ARow :gutter="[24, 24]">
-          <ACol v-for="clase in curso.clases" :key="clase.id" span="12">
-            <ACard class="card" hoverable>
-              <h3>{{ clase.nombre }}</h3>
-              <AButton class="btn" type="dashed" shape="circle">
-                <NuxtLink
-                  :to="{
-                    name: 'curso-id-clase-clase_id',
-                    params: { id: curso.id, clase_id: clase.id },
-                  }"
-                >
-                  <AIcon type="arrow-right" />
-                </NuxtLink>
-              </AButton>
-            </ACard>
-          </ACol>
-        </ARow>
+
+        <p class="card-info">
+          - Podés acceder al aula virtual de Zoom
+          <a :href="curso.enlace_zoom">en este link</a><br />
+          - Podés acceder también ingresando a Zoom, y luego colocando el ID 875
+          653 321 22<br />
+          <template v-if="curso.clave_zoom">
+            - La clave para ingresar es
+            <strong>{{ curso.clave_zoom }}</strong>
+          </template>
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Breadcrumb, Row, Col, Card, Icon } from "ant-design-vue";
+import { Breadcrumb } from "ant-design-vue";
 export default {
   components: {
     ABreadcrumb: Breadcrumb,
     ABreadcrumbItem: Breadcrumb.Item,
-    ARow: Row,
-    ACol: Col,
-    ACard: Card,
-    AIcon: Icon,
   },
   async fetch() {
     if (!this.$route.params.id) return;
@@ -71,7 +64,7 @@ export default {
   },
   head() {
     return {
-      title: "Grabaciones - " + this.curso.nombre,
+      title: "Acceso a Zoom - " + this.curso.nombre,
     };
   },
 };
@@ -95,6 +88,13 @@ h1 {
 .intro {
   max-width: 380px;
   margin-bottom: 60px;
+}
+
+.card-info {
+  padding: 24px;
+  margin-bottom: 24px;
+  color: @daybreak-blue-10;
+  border: 1px solid #e8e8e8;
 }
 
 .card {

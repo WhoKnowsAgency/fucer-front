@@ -6,7 +6,7 @@
           <NuxtLink to="/campus">Campus</NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>
-          <NuxtLink :to="curso.url">Curso</NuxtLink>
+          <NuxtLink :to="`/campus/curso/${curso.id}`"> Curso </NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>Comentarios</ABreadcrumbItem>
       </ABreadcrumb>

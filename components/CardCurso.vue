@@ -9,7 +9,7 @@
       <p>{{ curso.descripcion_corta }}</p>
     </div>
     <AButton class="card_button" type="primary" shape="round">
-      <NuxtLink :to="curso.url"> Ver más </NuxtLink>
+      <NuxtLink :to="`campus/curso/${curso.id}`"> Ver más </NuxtLink>
     </AButton>
   </ACard>
 </template>

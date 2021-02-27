@@ -6,18 +6,12 @@
           <NuxtLink to="/campus">Campus</NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>
-          <NuxtLink :to="curso.url">Curso</NuxtLink>
+          <NuxtLink :to="`/campus/curso/${curso.id}`"> Curso </NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>
-          <NuxtLink
-            :to="{
-              name: 'curso-id-grabaciones',
-              params: {
-                id: curso.id,
-              },
-            }"
-            >Grabaciones</NuxtLink
-          >
+          <NuxtLink :to="`campus/curso/${curso.id}/grabaciones`">
+            Grabaciones
+          </NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>{{ clase.nombre }}</ABreadcrumbItem>
       </ABreadcrumb>
