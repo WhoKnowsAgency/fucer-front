@@ -15,11 +15,7 @@
         <h1>{{ curso.nombre }}</h1>
 
         <!-- eslint-disable vue/no-v-html -->
-        <div
-          v-if="curso.info_campus"
-          class="card-info"
-          v-html="curso.info_campus"
-        />
+        <div v-if="mensaje" class="card-info" v-html="mensaje" />
         <!-- eslint-enable vue/no-v-html -->
 
         <ARow :gutter="[24, 24]">
@@ -40,11 +36,15 @@
 </template>
 
 <script>
-import { Breadcrumb, Row, Col, Card, Icon } from "ant-design-vue";
+import { Breadcrumb, Button, Row, Col, Card, Icon } from "ant-design-vue";
+import parse from "date-fns/parse";
+import format from "date-fns/format";
+import es from "date-fns/locale/es";
 export default {
   components: {
     ABreadcrumb: Breadcrumb,
     ABreadcrumbItem: Breadcrumb.Item,
+    AButton: Button,
     ARow: Row,
     ACol: Col,
     ACard: Card,
@@ -70,6 +70,24 @@ export default {
     };
   },
   computed: {
+    mensaje() {
+      if (["abierto", "cerrado"].includes(this.curso.estado)) {
+        const date = parse(
+          String(this.curso.fecha_inicio.slice(0, 10)),
+          "yyyy-MM-dd",
+          new Date(),
+          {
+            locale: es,
+          }
+        );
+        // https://date-fns.org/v2.14.0/docs/format
+        return `El contenido del curso será visible a partir del ${format(
+          date,
+          "dd/MM/yyyy"
+        )}`;
+      }
+      return this.curso.info_campus;
+    },
     enlaces() {
       let enlaces = [];
       if (this.curso.enlace_zoom) {
@@ -100,10 +118,12 @@ export default {
         });
       }
 
-      enlaces.push({
-        nombre: `Certificado`,
-        to: `${this.curso.id}/certificado`,
-      });
+      if (["en-curso", "finalizado"].includes(this.curso.estado)) {
+        enlaces.push({
+          nombre: `Certificado`,
+          to: `${this.curso.id}/certificado`,
+        });
+      }
 
       return enlaces;
     },
