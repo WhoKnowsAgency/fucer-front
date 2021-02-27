@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="box">
-      <h1>Ingresá al campus</h1>
+      <h1>Ingresar</h1>
+      <p>
+        Ingresá con tu cuenta para acceder al campus o inscribirte a un curso.
+      </p>
       <ValidationObserver v-slot="{ handleSubmit }">
         <form method="post" @submit.prevent="handleSubmit(onSubmit)">
           <p v-show="error" ref="error" tabindex="-1" class="form-error">
@@ -113,4 +116,12 @@ export default {
 @import "~assets/less/components/box";
 @import "~assets/less/components/form-error";
 @import "~assets/less/components/form-help";
+</style>
+<style lang="less" scoped>
+p {
+  color: @daybreak-blue-10;
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px;
+}
 </style>
