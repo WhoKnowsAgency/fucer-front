@@ -2,6 +2,7 @@ export const state = () => ({
   byId: {},
   idsByFilter: {
     todos: [],
+    abiertos: [],
     activos: [],
     finalizados: [],
   },
@@ -18,6 +19,7 @@ export const mutations = {
 
     switch (filter) {
       case "activos":
+      case "abiertos":
       case "finalizados":
         state.idsByFilter[filter] = response.map((curso) => curso.id);
         break;
@@ -30,6 +32,14 @@ export const actions = {
     const curso = await this.$api.cursos.getById(id);
     commit("RECEIVE_CURSOS", {
       response: normalizarCursos([curso]),
+    });
+  },
+  async getAbiertos({ commit }) {
+    console.log("getAbiertos");
+    const cursos = await this.$api.cursos.get({ estado: "abierto" });
+    commit("RECEIVE_CURSOS", {
+      response: normalizarCursos(cursos),
+      filter: "abiertos",
     });
   },
   async getActivos({ commit }) {
@@ -49,6 +59,7 @@ export const actions = {
 };
 
 export const getters = {
+  abiertos: (state) => state.idsByFilter.abiertos.map((id) => state.byId[id]),
   activos: (state) => state.idsByFilter.activos.map((id) => state.byId[id]),
   finalizados: (state) =>
     state.idsByFilter.finalizados.map((id) => state.byId[id]),

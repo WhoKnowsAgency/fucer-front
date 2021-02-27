@@ -16,6 +16,16 @@
       </div>
 
       <ATabs default-active-key="activos" @change="cargarCursos">
+        <ATabPane key="abiertos" tab="Inscripciones abiertas">
+          <p v-if="cursosConInscripcion.length === 0">
+            No hay cursos con inscripciones abiertas.
+          </p>
+          <CardCurso
+            v-for="curso in cursosConInscripcion"
+            :key="curso.id"
+            :curso="curso"
+          />
+        </ATabPane>
         <ATabPane key="activos" tab="Cursos activos">
           <p v-if="cursosActivos.length === 0">No tenés cursos activos.</p>
           <CardCurso
@@ -42,6 +52,9 @@
 <script>
 export default {
   computed: {
+    cursosConInscripcion() {
+      return this.$store.getters["cursos/abiertos"];
+    },
     cursosActivos() {
       return this.$store.getters["cursos/activos"];
     },
@@ -55,6 +68,7 @@ export default {
   methods: {
     async cargarCursos() {
       await this.$store.dispatch("cursos/getActivos");
+      this.$store.dispatch("cursos/getAbiertos");
       this.$store.dispatch("cursos/getFinalizados");
     },
   },
@@ -92,7 +106,11 @@ h1 {
 }
 /deep/ .ant-tabs-tabpane {
   display: flex;
+  flex-wrap: wrap;
   > .card {
+    max-width: 348px;
+    width: auto;
+    flex: 1 1 auto;
     margin: 10px;
   }
 }

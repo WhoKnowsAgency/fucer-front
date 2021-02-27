@@ -27,7 +27,6 @@ export default {
 
 <style lang="less" scoped>
 .card {
-  max-width: 384px;
   background-color: white;
   border: 1px solid #d9d9d9;
   border-radius: 10px;
