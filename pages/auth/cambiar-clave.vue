@@ -28,7 +28,7 @@
             autocomplete="new-password"
           />
 
-          <a-button
+          <AButton
             html-type="submit"
             :loading="status === 'pending'"
             type="primary"
@@ -36,7 +36,7 @@
             block
           >
             {{ txtSubmit }}
-          </a-button>
+          </AButton>
           <BtnCancelar to="/auth/login" />
         </form>
       </ValidationObserver>
@@ -45,10 +45,14 @@
 </template>
 
 <script>
+import { Button } from "ant-design-vue";
 export default {
   auth: false,
   validate({ params }) {
     return process.client ? /^[0-9a-z]{32}$/.test(params.token) : true;
+  },
+  components: {
+    AButton: Button,
   },
   data() {
     return {

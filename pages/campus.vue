@@ -50,7 +50,14 @@
 </template>
 
 <script>
+import { Tabs, Button, Icon } from "ant-design-vue";
 export default {
+  components: {
+    ATabs: Tabs,
+    ATabPane: Tabs.TabPane,
+    AButton: Button,
+    AIcon: Icon,
+  },
   computed: {
     cursosConInscripcion() {
       return this.$store.getters["cursos/abiertos"];

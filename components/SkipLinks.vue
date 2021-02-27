@@ -11,9 +11,9 @@
       </a>
     </li>
     <li>
-      <nuxt-link :to="{ hash: '#contenido' }" class="screen-reader-shortcut">
+      <NuxtLink :to="{ hash: '#contenido' }" class="screen-reader-shortcut">
         Saltar a contenido principal
-      </nuxt-link>
+      </NuxtLink>
     </li>
   </ul>
 </template>

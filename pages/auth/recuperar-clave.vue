@@ -19,7 +19,7 @@
             <template #error>El e-mail ingresado es inválido</template>
           </ControlEmail>
 
-          <a-button
+          <AButton
             html-type="submit"
             :loading="status === 'pending'"
             type="primary"
@@ -27,7 +27,7 @@
             block
           >
             {{ txtSubmit }}
-          </a-button>
+          </AButton>
           <BtnCancelar to="/auth/login" />
         </form>
       </ValidationObserver>
@@ -36,8 +36,12 @@
 </template>
 
 <script>
+import { Button } from "ant-design-vue";
 export default {
   auth: false,
+  components: {
+    AButton: Button,
+  },
   data() {
     return {
       email: this.$route.query.email || "",

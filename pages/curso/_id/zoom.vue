@@ -37,7 +37,12 @@
 </template>
 
 <script>
+import { Breadcrumb } from "ant-design-vue";
 export default {
+  components: {
+    ABreadcrumb: Breadcrumb,
+    ABreadcrumbItem: Breadcrumb.Item,
+  },
   async fetch() {
     if (!this.$route.params.id) return;
     try {

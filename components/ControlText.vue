@@ -3,7 +3,7 @@
     <div class="control">
       <div class="control-input" :class="errors.length ? 'has-error' : false">
         <label class="sr-only" :for="id">{{ label }}</label>
-        <a-input
+        <AInput
           :id="id"
           :value="value"
           type="text"
@@ -13,8 +13,8 @@
           v-bind="$attrs"
           @input="handleInput($event.target.value)"
         >
-          <a-icon v-if="icon" slot="prefix" :type="icon" />
-        </a-input>
+          <AIcon v-if="icon" slot="prefix" :type="icon" />
+        </AInput>
       </div>
 
       <template v-if="errors.length">
@@ -31,7 +31,12 @@
 </template>
 
 <script>
+import { Input, Icon } from "ant-design-vue";
 export default {
+  components: {
+    AInput: Input,
+    AIcon: Icon,
+  },
   inheritAttrs: false,
   props: {
     id: {

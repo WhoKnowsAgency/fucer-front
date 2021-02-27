@@ -10,7 +10,7 @@
       <!-- eslint-disable-next-line vue/no-v-html -->
       <p class="mensaje" v-html="mensaje" />
 
-      <a-button
+      <AButton
         v-if="status === 'error'"
         html-type="submit"
         type="primary"
@@ -18,8 +18,8 @@
         block
       >
         <NuxtLink to="/auth/login"> Iniciá sesión </NuxtLink>
-      </a-button>
-      <a-button
+      </AButton>
+      <AButton
         v-if="status === 'stale'"
         html-type="submit"
         type="primary"
@@ -27,16 +27,20 @@
         block
       >
         <NuxtLink to="/campus"> Accedé al campus </NuxtLink>
-      </a-button>
+      </AButton>
     </div>
   </div>
 </template>
 
 <script>
+import { Button } from "ant-design-vue";
 export default {
   auth: false,
   validate({ params }) {
     return process.client ? /^[0-9a-z]{32}$/.test(params.token) : true;
+  },
+  components: {
+    AButton: Button,
   },
   data() {
     return {

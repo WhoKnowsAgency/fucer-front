@@ -16,7 +16,12 @@
 </template>
 
 <script>
+import { Layout } from "ant-design-vue";
 export default {
+  components: {
+    ALayout: Layout,
+    ALayoutContent: Layout.Content,
+  },
   errorCaptured(error) {
     this.$store.dispatch("setPaginaError", error.toString());
     return false; // prevent Nuxt from handling the error

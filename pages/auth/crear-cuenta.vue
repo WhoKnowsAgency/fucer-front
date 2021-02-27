@@ -36,7 +36,7 @@
             autocomplete="new-password"
           />
 
-          <a-button
+          <AButton
             html-type="submit"
             :loading="status === 'pending'"
             type="primary"
@@ -44,7 +44,7 @@
             block
           >
             {{ txtSubmit }}
-          </a-button>
+          </AButton>
           <div class="form-help">
             ¿Ya tenés cuenta?
             <NuxtLink to="/auth/login"> Ingresá</NuxtLink>
@@ -56,8 +56,12 @@
 </template>
 
 <script>
+import { Button } from "ant-design-vue";
 export default {
   auth: false,
+  components: {
+    AButton: Button,
+  },
   data() {
     return {
       email: "",

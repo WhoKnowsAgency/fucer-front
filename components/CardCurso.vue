@@ -15,7 +15,13 @@
 </template>
 
 <script>
+import { Card, Button, Icon } from "ant-design-vue";
 export default {
+  components: {
+    ACard: Card,
+    AButton: Button,
+    AIcon: Icon,
+  },
   props: {
     curso: {
       type: [Object],

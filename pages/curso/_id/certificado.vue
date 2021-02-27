@@ -31,7 +31,13 @@
 </template>
 
 <script>
+import { Breadcrumb, Empty } from "ant-design-vue";
 export default {
+  components: {
+    ABreadcrumb: Breadcrumb,
+    ABreadcrumbItem: Breadcrumb.Item,
+    AEmpty: Empty,
+  },
   computed: {
     curso() {
       return this.$store.state.cursos.byId[this.$route.params.id];

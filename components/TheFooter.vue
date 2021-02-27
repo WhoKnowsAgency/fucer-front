@@ -123,7 +123,13 @@
 </template>
 
 <script>
-export default {};
+import { Layout, Divider } from "ant-design-vue";
+export default {
+  components: {
+    ADivider: Divider,
+    ALayoutFooter: Layout.Footer,
+  },
+};
 </script>
 
 <style lang="less" scoped>

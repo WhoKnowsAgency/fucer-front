@@ -11,7 +11,7 @@
         class="control-input has-visibility-toggle"
         :class="errors.length ? 'has-error' : false"
       >
-        <a-input
+        <AInput
           :id="id"
           :value="value"
           :type="mostrarClave ? 'text' : 'password'"
@@ -21,15 +21,15 @@
           v-bind="$attrs"
           @input="$emit('input', $event.target.value)"
         >
-          <a-icon slot="prefix" type="lock" />
-          <a-tooltip slot="suffix" :title="mostrarClaveLabel">
-            <a-icon
+          <AIcon slot="prefix" type="lock" />
+          <ATooltip slot="suffix" :title="mostrarClaveLabel">
+            <AIcon
               :type="mostrarClave ? 'eye-invisible' : 'eye'"
               @click="mostrarClave = !mostrarClave"
               @keypress.enter.prevent="mostrarClave = !mostrarClave"
             />
-          </a-tooltip>
-        </a-input>
+          </ATooltip>
+        </AInput>
       </div>
 
       <template v-if="errors.length">
@@ -46,7 +46,13 @@
 </template>
 
 <script>
+import { Input, Icon, Tooltip } from "ant-design-vue";
 export default {
+  components: {
+    AInput: Input,
+    ATooltip: Tooltip,
+    AIcon: Icon,
+  },
   props: {
     id: {
       type: String,

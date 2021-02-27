@@ -17,8 +17,12 @@
 </template>
 
 <script>
+import { Button } from "ant-design-vue";
 export default {
   auth: false,
+  components: {
+    AButton: Button,
+  },
 };
 </script>
 

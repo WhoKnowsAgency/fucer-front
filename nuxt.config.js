@@ -115,13 +115,11 @@ export default {
     { src: "~/plugins/sentry", mode: "client" },
     { src: "~/plugins/utils", mode: "client" },
     // { src: "~/plugins/axe", mode: "client" },
-    "~/plugins/ant-design-vue",
   ],
 
   router: {
     middleware: ["auth"],
     extendRoutes(routes) {
-      console.log(routes);
       routes.splice(
         0,
         routes.length,

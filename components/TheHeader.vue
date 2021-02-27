@@ -82,7 +82,17 @@
 </template>
 
 <script>
-export default {};
+import { Layout, Menu, Button, Badge, Dropdown } from "ant-design-vue";
+export default {
+  components: {
+    ALayoutHeader: Layout.Header,
+    AMenuItem: Menu.Item,
+    AMenu: Menu,
+    AButton: Button,
+    ABadge: Badge,
+    ADropdown: Dropdown,
+  },
+};
 </script>
 
 <style lang="less" scoped>

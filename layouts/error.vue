@@ -16,11 +16,10 @@
 </template>
 
 <script>
-import SkipLinks from "~/components/SkipLinks.vue";
-
+import { Icon } from "ant-design-vue";
 export default {
   components: {
-    SkipLinks,
+    AIcon: Icon,
   },
   data() {
     return {

@@ -40,7 +40,16 @@
 </template>
 
 <script>
+import { Breadcrumb, Row, Col, Card, Icon } from "ant-design-vue";
 export default {
+  components: {
+    ABreadcrumb: Breadcrumb,
+    ABreadcrumbItem: Breadcrumb.Item,
+    ARow: Row,
+    ACol: Col,
+    ACard: Card,
+    AIcon: Icon,
+  },
   async fetch() {
     if (!this.$route.params.id) return;
     try {

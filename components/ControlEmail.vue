@@ -8,7 +8,7 @@
     <label v-if="label" class="sr-only" :for="id">{{ label }}</label>
     <div class="control">
       <div class="control-input" :class="errors.length ? 'has-error' : false">
-        <a-input
+        <AInput
           :id="id"
           :ref="id"
           :value="value"
@@ -19,8 +19,8 @@
           v-bind="$attrs"
           @input="$emit('input', $event.target.value)"
         >
-          <a-icon slot="prefix" type="mail" />
-        </a-input>
+          <AIcon slot="prefix" type="mail" />
+        </AInput>
       </div>
 
       <template v-if="errors.length">
@@ -37,7 +37,12 @@
 </template>
 
 <script>
+import { Input, Icon } from "ant-design-vue";
 export default {
+  components: {
+    AInput: Input,
+    AIcon: Icon,
+  },
   inheritAttrs: false,
   props: {
     id: {
