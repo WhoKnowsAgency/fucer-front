@@ -47,7 +47,9 @@
               </a>
               <AMenu id="profile" slot="overlay">
                 <AMenuItem key="0">
-                  <NuxtLink to="/"><AIcon type="home" /> Inicio </NuxtLink>
+                  <NuxtLink to="/campus"
+                    ><AIcon type="home" /> Inicio
+                  </NuxtLink>
                 </AMenuItem>
                 <AMenuItem key="1">
                   <NuxtLink to="/configuracion"

@@ -130,7 +130,6 @@ h1 {
 }
 
 .card {
-  max-width: 384px;
   background: white;
   h3 {
     font-weight: bold;
