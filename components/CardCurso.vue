@@ -9,7 +9,7 @@
       <p>{{ curso.descripcion_corta }}</p>
     </div>
     <AButton class="card_button" type="primary" shape="round">
-      <NuxtLink :to="`campus/curso/${curso.id}`"> Ver más </NuxtLink>
+      <NuxtLink :to="enlace"> Ver más </NuxtLink>
     </AButton>
   </ACard>
 </template>
@@ -26,6 +26,17 @@ export default {
     curso: {
       type: [Object],
       required: true,
+    },
+    tipo: {
+      type: String,
+      default: "publico",
+    },
+  },
+  computed: {
+    enlace() {
+      return `/${this.tipo === "campus" ? "campus/" : ""}curso/${
+        this.curso.id
+      }`;
     },
   },
 };

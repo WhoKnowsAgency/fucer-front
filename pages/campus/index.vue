@@ -24,6 +24,7 @@
             v-for="curso in cursosConInscripcion"
             :key="curso.id"
             :curso="curso"
+            tipo="publico"
           />
         </ATabPane>
         <ATabPane key="activos" tab="Cursos activos">
@@ -32,6 +33,7 @@
             v-for="curso in cursosActivos"
             :key="curso.id"
             :curso="curso"
+            tipo="campus"
           />
         </ATabPane>
         <ATabPane key="finalizados" tab="Cursos finalizados">
@@ -42,6 +44,7 @@
             v-for="curso in cursosFinalizados"
             :key="curso.id"
             :curso="curso"
+            tipo="campus"
           />
         </ATabPane>
       </ATabs>
