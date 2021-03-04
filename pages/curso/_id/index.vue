@@ -2,7 +2,7 @@
   <CursoPublico
     :titulo="curso.nombre"
     :volver="{
-      to: '/campus',
+      to: '/cursos',
       text: 'Volver a cursos',
     }"
   >

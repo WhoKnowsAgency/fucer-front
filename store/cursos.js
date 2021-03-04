@@ -35,7 +35,6 @@ export const actions = {
     });
   },
   async getAbiertos({ commit }) {
-    console.log("getAbiertos");
     const cursos = await this.$api.cursos.get({ estado: "abierto" });
     commit("RECEIVE_CURSOS", {
       response: normalizarCursos(cursos),
