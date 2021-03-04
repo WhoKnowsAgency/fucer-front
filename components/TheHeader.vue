@@ -10,14 +10,16 @@
           :srcSet="require('assets/img/fucer-azul.png')"
           type="image/png"
         />
-        <img
-          width="65"
-          height="65"
-          class="logo"
-          src="~assets/img/fucer-azul.png"
-          srcset="~assets/img/fucer-azul.x2.png 2x"
-          alt="Logo de Fucer"
-        />
+        <NuxtLink to="/">
+          <img
+            width="65"
+            height="65"
+            class="logo"
+            src="~assets/img/fucer-azul.png"
+            srcset="~assets/img/fucer-azul.x2.png 2x"
+            alt="Logo de Fucer"
+          />
+        </NuxtLink>
       </picture>
       <AMenu class="menu" mode="horizontal" expand-icon="hola">
         <AMenuItem key="1">Cursos</AMenuItem>
