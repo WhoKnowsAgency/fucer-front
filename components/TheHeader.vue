@@ -22,7 +22,9 @@
         </NuxtLink>
       </picture>
       <AMenu class="menu" mode="horizontal" expand-icon="hola">
-        <AMenuItem key="1">Cursos</AMenuItem>
+        <AMenuItem key="1">
+          <NuxtLink to="/cursos"> Cursos </NuxtLink>
+        </AMenuItem>
         <template v-if="$auth.loggedIn">
           <AMenuItem key="7">
             <ADropdown>
