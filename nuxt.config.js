@@ -111,6 +111,7 @@ export default {
     "~/plugins/focus",
     "~/plugins/vee-validate",
     { src: "~/plugins/announcer", mode: "client" },
+    { src: "~/plugins/masonry", mode: "client" },
     "~/plugins/filtros",
     { src: "~/plugins/sentry", mode: "client" },
     { src: "~/plugins/utils", mode: "client" },
