@@ -23,20 +23,7 @@
       </picture>
       <AMenu class="menu" mode="horizontal" expand-icon="hola">
         <AMenuItem key="1">Cursos</AMenuItem>
-        <AMenuItem key="3">Institucional</AMenuItem>
-        <AMenuItem key="4">Publicaciones</AMenuItem>
-        <AMenuItem key="5">Contacto</AMenuItem>
         <template v-if="$auth.loggedIn">
-          <AMenuItem key="6">
-            <ABadge count="12" size="small">
-              <img
-                width="16"
-                height="22"
-                src="~/assets/img/icons/campana.svg"
-                alt=""
-              />
-            </ABadge>
-          </AMenuItem>
           <AMenuItem key="7">
             <ADropdown>
               <a href="#profile" class="avatar ant-dropdown-link">
@@ -51,11 +38,6 @@
                 <AMenuItem key="0">
                   <NuxtLink to="/campus"
                     ><AIcon type="home" /> Inicio
-                  </NuxtLink>
-                </AMenuItem>
-                <AMenuItem key="1">
-                  <NuxtLink to="/configuracion"
-                    ><AIcon type="setting" /> Configuración
                   </NuxtLink>
                 </AMenuItem>
                 <AMenuItem key="2">
@@ -84,7 +66,7 @@
 </template>
 
 <script>
-import { Layout, Menu, Button, Avatar, Badge, Dropdown } from "ant-design-vue";
+import { Layout, Menu, Button, Avatar, Dropdown } from "ant-design-vue";
 export default {
   components: {
     ALayoutHeader: Layout.Header,
@@ -92,7 +74,6 @@ export default {
     AMenu: Menu,
     AButton: Button,
     AAvatar: Avatar,
-    ABadge: Badge,
     ADropdown: Dropdown,
   },
 };

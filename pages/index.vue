@@ -8,9 +8,11 @@
       </p>
       <div class="botonera">
         <AButton shape="round" type="primary">
-          <NuxtLink to="/campus">Cursos virtuales</NuxtLink>
+          <NuxtLink to="/campus">Campus</NuxtLink>
         </AButton>
-        <AButton shape="round">Sobre FUCER</AButton>
+        <AButton shape="round">
+          <NuxtLink to="/cursos">Cursos</NuxtLink>
+        </AButton>
       </div>
     </div>
   </div>
