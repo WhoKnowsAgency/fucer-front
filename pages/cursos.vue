@@ -48,6 +48,7 @@
 import { Tabs } from "ant-design-vue";
 
 export default {
+  auth: false,
   components: {
     ATabs: Tabs,
     ATabPane: Tabs.TabPane,

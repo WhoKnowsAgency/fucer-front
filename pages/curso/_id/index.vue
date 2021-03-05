@@ -30,6 +30,7 @@
 <script>
 import { Button, Icon } from "ant-design-vue";
 export default {
+  auth: false,
   components: {
     AButton: Button,
     AIcon: Icon,
