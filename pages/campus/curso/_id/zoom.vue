@@ -24,8 +24,10 @@
         <p class="card-info">
           - Podés acceder al aula virtual de Zoom
           <a :href="curso.enlace_zoom">en este link</a><br />
-          - Podés acceder también ingresando a Zoom, y luego colocando el ID 875
-          653 321 22<br />
+          <template v-if="curso.id_zoom">
+            - Podés acceder también ingresando a Zoom, y luego colocando el ID
+            {{ curso.id_zoom }}<br />
+          </template>
           <template v-if="curso.clave_zoom">
             - La clave para ingresar es
             <strong>{{ curso.clave_zoom }}</strong>
