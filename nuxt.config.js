@@ -16,7 +16,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: "La normativa registral, en una base de datos única en el país",
+    title: "",
     titleTemplate: "%s | Fucer",
     htmlAttrs: {
       lang: "es",
@@ -27,8 +27,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content:
-          "Fucer es una herramienta digital en la que encontrará el texto completo de las principales Disposiciones complementarias y Circulares aclaratorias del Digesto, con un breve resumen del contenido de las mismas, y diversos artículos de doctrina y jurisprudencia.",
+        content: "",
       },
       { name: "msapplication-TileColor", content: "#2b5797" },
     ],
