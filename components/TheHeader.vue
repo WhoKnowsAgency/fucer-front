@@ -68,10 +68,11 @@
 </template>
 
 <script>
-import { Layout, Menu, Button, Avatar, Dropdown } from "ant-design-vue";
+import { Layout, Menu, Button, Avatar, Dropdown, Icon } from "ant-design-vue";
 export default {
   components: {
     ALayoutHeader: Layout.Header,
+    AIcon: Icon,
     AMenuItem: Menu.Item,
     AMenu: Menu,
     AButton: Button,
