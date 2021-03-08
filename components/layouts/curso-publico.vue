@@ -15,6 +15,9 @@
 
     <div class="curso_cuerpo">
       <div class="container">
+        <slot name="extra" />
+      </div>
+      <div class="container">
         <div class="curso_cuerpo-inner">
           <slot name="cuerpo" />
         </div>

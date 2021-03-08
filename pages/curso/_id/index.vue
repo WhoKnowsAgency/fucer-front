@@ -13,7 +13,12 @@
           {{ curso.fecha_inicio.slice(0, 10) | fecha("dd/MM") }}
         </div>
         <p>{{ curso.descripcion_corta }}</p>
-        <AButton shape="round" type="primary" block>
+        <AButton
+          v-if="curso.estado === 'abierto'"
+          shape="round"
+          type="primary"
+          block
+        >
           <NuxtLink :to="`/curso/${curso.id}/inscripcion`">
             Inscribirme
           </NuxtLink>

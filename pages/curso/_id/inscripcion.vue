@@ -6,7 +6,7 @@
       text: 'Volver al curso',
     }"
   >
-    <template #cuerpo>
+    <template v-if="curso.enlace_inscripcion" #cuerpo>
       <iframe
         title="Formulario de inscripción"
         width="100%"
@@ -16,11 +16,23 @@
       >
       </iframe>
     </template>
+
+    <template v-if="!curso.enlace_inscripcion" #extra>
+      <AEmpty class="curso_empty">
+        <div slot="description">
+          <h3>Las inscripciones para este curso se encuentran cerradas</h3>
+        </div>
+      </AEmpty>
+    </template>
   </CursoPublico>
 </template>
 
 <script>
+import { Empty } from "ant-design-vue";
 export default {
+  components: {
+    AEmpty: Empty,
+  },
   async fetch() {
     if (!this.$route.params.id) return;
     try {
@@ -56,5 +68,9 @@ export default {
   border: 0;
   border-radius: 10px;
   margin-bottom: -5px;
+}
+.curso_empty {
+  padding-top: 40px;
+  margin: -140px 0 100px !important;
 }
 </style>
