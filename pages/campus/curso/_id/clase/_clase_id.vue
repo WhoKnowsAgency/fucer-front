@@ -18,7 +18,7 @@
 
       <div>
         <h1>{{ clase.nombre }}</h1>
-        <div class="iframe">
+        <div v-if="clase.id_vimeo" class="iframe">
           <iframe
             :title="clase.nombre"
             :src="`https://player.vimeo.com/video/${clase.id_vimeo}?title=0&byline=0&portrait=0`"
@@ -36,17 +36,25 @@
             allowfullscreen
           ></iframe>
         </div>
+        <div v-else>
+          <AEmpty>
+            <div slot="description">
+              <h3>Aún no se cargó una grabación de esta clase.</h3>
+            </div>
+          </AEmpty>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Breadcrumb } from "ant-design-vue";
+import { Breadcrumb, Empty } from "ant-design-vue";
 export default {
   components: {
     ABreadcrumb: Breadcrumb,
     ABreadcrumbItem: Breadcrumb.Item,
+    AEmpty: Empty,
   },
   async fetch() {
     if (!this.$route.params.id) return;
@@ -70,7 +78,7 @@ export default {
   computed: {
     clase() {
       return this.curso.clases.filter(
-        (c) => c.id === this.$route.params.clase_id
+        (c) => c.id == this.$route.params.clase_id
       )[0];
     },
   },
