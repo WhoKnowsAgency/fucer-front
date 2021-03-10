@@ -13,8 +13,8 @@
       <div>
         <h1>Comentarios</h1>
         <p class="intro">
-          En este espacio podés intercambiar mensajes y despejar dudas con los
-          docentes y participantes.
+          En este espacio podés intercambiar mensajes, debatir tópicos y
+          despejar dudas con el resto de los alumnos.
         </p>
         <div
           v-if="comentarios"
