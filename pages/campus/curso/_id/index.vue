@@ -6,7 +6,7 @@
           <NuxtLink to="/campus">Campus</NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>
-          <NuxtLink to="/campus#activos">Cursos activos</NuxtLink>
+          <NuxtLink to="/campus#activos">Mis cursos</NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>Curso</ABreadcrumbItem>
       </ABreadcrumb>

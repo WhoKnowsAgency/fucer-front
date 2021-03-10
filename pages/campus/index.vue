@@ -29,7 +29,7 @@
             />
           </masonry>
         </ATabPane>
-        <ATabPane key="activos" tab="Cursos activos">
+        <ATabPane key="activos" tab="Mis cursos">
           <p v-if="cursosActivos.length === 0">No tenés cursos activos.</p>
           <masonry :cols="{ default: 4, 1070: 3, 710: 2, 400: 1 }" :gutter="10">
             <CardCurso
