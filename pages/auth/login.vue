@@ -100,7 +100,9 @@ export default {
             password: this.clave,
           },
         });
-        this.$router.push("/campus");
+        if (this.$auth.$storage.getUniversal("redirect")) {
+          this.$router.push(this.$auth.$storage.getUniversal("redirect"));
+        }
         this.status = "stale";
       } catch (err) {
         console.error(err);

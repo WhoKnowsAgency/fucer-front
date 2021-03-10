@@ -87,6 +87,7 @@ export default {
   },
 
   auth: {
+    rewriteRedirects: true,
     redirect: {
       login: "/auth/login",
       logout: "/",
