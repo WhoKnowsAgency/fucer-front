@@ -1,7 +1,7 @@
 <template>
   <div class="cursos">
     <div class="container">
-      <ATabs default-active-key="activos">
+      <ATabs :active-key="tabActiveKey" @change="tabsUpdateActiveKey">
         <ATabPane key="abiertos" tab="Inscripciones abiertas">
           <p v-if="cursosConInscripcion.length === 0">
             No hay cursos con inscripciones abiertas.
@@ -59,6 +59,19 @@ export default {
       cursosActivos: await $api.cursos.get({ estado: "en-curso" }),
       cursosFinalizados: await $api.cursos.get({ estado: "finalizado" }),
     };
+  },
+  data() {
+    return {
+      tabActiveKey:
+        (window && window.location.hash.replace("#", "")) || "activos",
+    };
+  },
+  methods: {
+    tabsUpdateActiveKey(activeKey) {
+      console.log("tabsUpdateActiveKey", activeKey);
+      this.tabActiveKey = activeKey;
+      window.location.hash = "#" + activeKey;
+    },
   },
 };
 </script>

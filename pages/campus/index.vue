@@ -9,26 +9,15 @@
 
         <div class="botonera">
           <AButton type="dashed" size="small">
-            Inscribirme a un curso
-            <AIcon type="plus-circle" />
+            <NuxtLink to="/cursos#abiertos">
+              Inscribirme a un curso
+              <AIcon type="plus-circle" />
+            </NuxtLink>
           </AButton>
         </div>
       </div>
 
       <ATabs default-active-key="activos" @change="cargarCursos">
-        <ATabPane key="abiertos" tab="Inscripciones abiertas">
-          <p v-if="cursosConInscripcion.length === 0">
-            No hay cursos con inscripciones abiertas.
-          </p>
-          <masonry :cols="{ default: 4, 1070: 3, 710: 2, 400: 1 }" :gutter="10">
-            <CardCurso
-              v-for="curso in cursosConInscripcion"
-              :key="curso.id"
-              :curso="curso"
-              tipo="publico"
-            />
-          </masonry>
-        </ATabPane>
         <ATabPane key="activos" tab="Mis cursos">
           <p v-if="cursosActivos.length === 0">No tenés cursos activos.</p>
           <masonry :cols="{ default: 4, 1070: 3, 710: 2, 400: 1 }" :gutter="10">
@@ -68,9 +57,6 @@ export default {
     AIcon: Icon,
   },
   computed: {
-    cursosConInscripcion() {
-      return this.$store.getters["cursos/abiertos"];
-    },
     cursosActivos() {
       return this.$store.getters["cursos/activos"];
     },
@@ -84,7 +70,6 @@ export default {
   methods: {
     async cargarCursos() {
       await this.$store.dispatch("cursos/getActivos");
-      this.$store.dispatch("cursos/getAbiertos");
       this.$store.dispatch("cursos/getFinalizados");
     },
   },
