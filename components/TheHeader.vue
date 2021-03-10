@@ -39,7 +39,7 @@
               <AMenu id="profile" slot="overlay">
                 <AMenuItem key="0">
                   <NuxtLink to="/campus"
-                    ><AIcon type="home" /> Inicio
+                    ><AIcon type="home" /> Campus
                   </NuxtLink>
                 </AMenuItem>
                 <AMenuItem key="2">
