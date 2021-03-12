@@ -35,7 +35,7 @@
                 <a href="">Inicio</a>
               </li>
               <li>
-                <a href="">Cursos activos</a>
+                <a href="">Cursos en curso</a>
               </li>
               <li>
                 <a href="">Cursos finalizados</a>
