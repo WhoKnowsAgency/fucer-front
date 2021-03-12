@@ -73,6 +73,15 @@ export default {
     "nuxt-webfontloader",
     "@nuxtjs/style-resources",
     "@nuxtjs/toast",
+    [
+      "nuxt-facebook-pixel-module",
+      {
+        track: "PageView",
+        pixelId: "186147059968707",
+        autoPageView: true,
+        disabled: false,
+      },
+    ],
   ],
 
   axios: {
