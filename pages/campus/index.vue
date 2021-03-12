@@ -88,6 +88,7 @@ h1 {
   line-height: 54px;
   margin-bottom: 40px;
   color: @daybreak-blue-10;
+  text-transform: capitalize;
 }
 .botonera {
   width: fit-content;
