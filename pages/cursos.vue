@@ -28,7 +28,7 @@
         </ATabPane>
         <ATabPane key="finalizados" tab="Cursos finalizados">
           <p v-if="cursosFinalizados.length === 0">
-            No tenés cursos finalizados.
+            No hay cursos finalizados.
           </p>
           <masonry :cols="{ default: 4, 1070: 3, 710: 2, 400: 1 }" :gutter="10">
             <CardCurso
