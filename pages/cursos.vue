@@ -63,7 +63,7 @@ export default {
   data() {
     return {
       tabActiveKey:
-        (window && window.location.hash.replace("#", "")) || "activos",
+        (window && window.location.hash.replace("#", "")) || "abiertos",
     };
   },
   methods: {
