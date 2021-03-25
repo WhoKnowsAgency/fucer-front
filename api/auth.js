@@ -13,6 +13,22 @@ export default ($axios) => ({
       token,
     });
   },
+  async actualizarUsuario({ nombre, email, password, currentPassword }) {
+    let datos = {};
+    if (nombre) {
+      datos.nombre = nombre;
+    }
+    if (email) {
+      datos.email = email;
+    }
+    if (password) {
+      datos.password = password;
+    }
+    if (currentPassword) {
+      datos.currentPassword = currentPassword;
+    }
+    return await $axios.$patch(`api/${resource}/user`, datos);
+  },
   async pedirCambioClave(email) {
     return await $axios.$post(`api/${resource}/send-reset-password-email`, {
       email,
