@@ -23,6 +23,10 @@
             Inscribirme
           </NuxtLink>
         </AButton>
+        <p>
+          Para inscribirte necesitás una cuenta en el campus por única vez. Si
+          aún no tenés una, podés crearla ahora.
+        </p>
       </div>
     </template>
 
