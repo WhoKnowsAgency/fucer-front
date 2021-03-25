@@ -9,7 +9,7 @@
           <NuxtLink :to="`/campus/curso/${curso.id}`"> Curso </NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>
-          <NuxtLink :to="`campus/curso/${curso.id}/grabaciones`">
+          <NuxtLink :to="`/campus/curso/${curso.id}/grabaciones`">
             Grabaciones
           </NuxtLink>
         </ABreadcrumbItem>
