@@ -3,7 +3,9 @@
     <div class="box">
       <h1>Ingresar</h1>
       <p>
-        Ingresá con tu cuenta para acceder al campus o inscribirte a un curso.
+        Inscribite a un curso o accedé al campus virtual. En caso de que quieras
+        inscribirte a un curso y no tengas cuenta, podés crearla haciendo
+        <NuxtLink to="/auth/crear-cuenta">click aquí</NuxtLink>.
       </p>
       <ValidationObserver v-slot="{ handleSubmit }">
         <form method="post" @submit.prevent="handleSubmit(onSubmit)">
@@ -126,7 +128,6 @@ export default {
 <style lang="less" scoped>
 p {
   color: @daybreak-blue-10;
-  text-align: center;
   font-size: 14px;
   line-height: 22px;
 }
