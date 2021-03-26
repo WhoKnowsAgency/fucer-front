@@ -23,9 +23,8 @@
             Inscribirme
           </NuxtLink>
         </AButton>
-        <p>
-          Para inscribirte necesitás una cuenta en el campus por única vez. Si
-          aún no tenés una, podés crearla ahora.
+        <p class="aclaracion">
+          Para inscribirte tenés que acceder al campus con tu cuenta
         </p>
       </div>
     </template>
@@ -89,6 +88,12 @@ export default {
   .fecha {
     font-size: 16px;
     line-height: 24px;
+  }
+  .aclaracion {
+    text-align: center;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.4;
   }
   p {
     font-size: 16px;
