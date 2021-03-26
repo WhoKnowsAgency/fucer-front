@@ -82,6 +82,7 @@ export default {
 
 h1 {
   font-weight: bold;
+  word-spacing: -0.3em;
   font-size: 46px;
   line-height: 54px;
   margin-bottom: 40px;
@@ -109,5 +110,6 @@ h1 {
 }
 /deep/ .ant-tabs-nav .ant-tabs-tab-active {
   font-weight: 700;
+  word-spacing: -0.3em;
 }
 </style>

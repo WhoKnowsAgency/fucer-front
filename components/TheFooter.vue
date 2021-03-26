@@ -162,6 +162,7 @@ a {
     line-height: 24px;
     color: inherit;
     font-weight: 700;
+    word-spacing: -0.3em;
     margin-bottom: 12px;
   }
   p {

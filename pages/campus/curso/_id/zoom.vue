@@ -104,6 +104,7 @@ h1 {
   background: white;
   h3 {
     font-weight: bold;
+    word-spacing: -0.3em;
     font-size: 16px;
     line-height: 24px;
     color: @daybreak-blue-10;

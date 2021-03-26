@@ -90,5 +90,6 @@ export default {
 }
 /deep/ .ant-tabs-nav .ant-tabs-tab-active {
   font-weight: 700;
+  word-spacing: -0.3em;
 }
 </style>

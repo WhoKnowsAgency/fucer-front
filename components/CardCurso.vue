@@ -60,6 +60,7 @@ export default {
   }
   h3 {
     font-weight: 700;
+    word-spacing: -0.3em;
     font-size: 24px;
     line-height: 32px;
     color: @daybreak-blue-10;

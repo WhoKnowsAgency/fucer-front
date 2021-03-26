@@ -65,6 +65,7 @@ export default {
 }
 h1 {
   font-weight: bold;
+  word-spacing: -0.3em;
   font-size: 30px;
   line-height: 38px;
   margin-top: 10px;

@@ -108,6 +108,7 @@ export default {
   padding: 32px 24px;
   h2 {
     font-weight: bold;
+    word-spacing: -0.3em;
     font-size: 24px;
     line-height: 32px;
     color: @daybreak-blue-10;

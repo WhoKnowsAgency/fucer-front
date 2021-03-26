@@ -35,6 +35,7 @@ export default {
   margin: 125px auto;
   h1 {
     font-weight: bold;
+    word-spacing: -0.3em;
     font-size: 46px;
     line-height: 54px;
     color: @daybreak-blue-10;

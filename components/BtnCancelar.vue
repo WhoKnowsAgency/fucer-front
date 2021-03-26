@@ -20,6 +20,7 @@ export default {
   display: block;
   text-align: center;
   font-weight: bold;
+  word-spacing: -0.3em;
   margin-top: 20px;
 }
 </style>

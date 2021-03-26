@@ -79,6 +79,7 @@ export default {
 
 h1 {
   font-weight: bold;
+  word-spacing: -0.3em;
   font-size: 30px;
   line-height: 38px;
   margin-top: 16px;
@@ -95,6 +96,7 @@ h1 {
   background: white;
   h3 {
     font-weight: bold;
+    word-spacing: -0.3em;
     font-size: 16px;
     line-height: 24px;
     color: @daybreak-blue-10;

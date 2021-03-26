@@ -57,6 +57,7 @@ export default {
   display: block;
   font-size: 14px;
   font-weight: 700;
+  word-spacing: -0.3em;
   height: auto;
   padding: 15px 23px 14px;
   text-decoration: none;
