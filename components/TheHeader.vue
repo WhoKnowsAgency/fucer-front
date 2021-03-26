@@ -42,6 +42,11 @@
                     ><AIcon type="home" /> Campus
                   </NuxtLink>
                 </AMenuItem>
+                <AMenuItem key="1">
+                  <NuxtLink to="/campus/configuracion"
+                    ><AIcon type="setting" /> Configuración
+                  </NuxtLink>
+                </AMenuItem>
                 <AMenuItem key="2">
                   <a
                     href="#logout"
