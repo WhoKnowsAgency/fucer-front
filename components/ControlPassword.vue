@@ -67,7 +67,7 @@ export default {
       required: true,
     },
     rules: {
-      type: String,
+      type: [String, Object],
       default: "",
     },
   },
