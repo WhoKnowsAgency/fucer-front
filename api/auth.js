@@ -13,21 +13,34 @@ export default ($axios) => ({
       token,
     });
   },
-  async actualizarUsuario({ nombre, email, password, currentPassword }) {
-    let datos = {};
+  async actualizarUsuario({
+    nombre,
+    email,
+    password,
+    currentPassword,
+    imagen,
+  }) {
+    let datos = new FormData();
     if (nombre) {
-      datos.nombre = nombre;
+      datos.append("nombre", nombre);
     }
     if (email) {
-      datos.email = email;
+      datos.append("email", email);
     }
     if (password) {
-      datos.password = password;
+      datos.append("password", password);
     }
     if (currentPassword) {
-      datos.currentPassword = currentPassword;
+      datos.append("currentPassword", currentPassword);
     }
-    return await $axios.$patch(`api/${resource}/user`, datos);
+    if (imagen) {
+      datos.append("imagen", imagen);
+    }
+    return await $axios.$post(`api/${resource}/user/update`, datos, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   },
   async pedirCambioClave(email) {
     return await $axios.$post(`api/${resource}/send-reset-password-email`, {

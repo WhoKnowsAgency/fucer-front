@@ -69,6 +69,17 @@
               autocomplete="current-password"
             />
 
+            <div class="upload-box">
+              <AAvatar class="upload-box_avatar" :size="64" :src="imagen" />
+              <ControlFile
+                id="imagen"
+                ref="imagen"
+                v-model="imagenNueva"
+                class="upload-box_button"
+                label="foto"
+              />
+            </div>
+
             <AButton
               html-type="submit"
               :loading="status === 'pending'"
@@ -86,10 +97,11 @@
 </template>
 
 <script>
-import { Button, Breadcrumb } from "ant-design-vue";
+import { Button, Breadcrumb, Avatar } from "ant-design-vue";
 
 export default {
   components: {
+    AAvatar: Avatar,
     AButton: Button,
     ABreadcrumb: Breadcrumb,
     ABreadcrumbItem: Breadcrumb.Item,
@@ -101,6 +113,8 @@ export default {
       claveNueva: "",
       claveNuevaConfirmacion: "",
       nombre: this.$auth.user.nombre,
+      imagen: this.$auth.user.foto.src,
+      imagenNueva: "",
       error: "",
       status: "stale",
     };
@@ -126,7 +140,11 @@ export default {
           email: this.email,
           password: this.claveNueva,
           currentPassword: this.claveActual,
+          imagen: this.$refs.imagen.$refs.file.files[0],
         });
+        this.$auth.fetchUser();
+        this.imagen = this.$auth.user.imagen.src;
+        this.nuevaImagen = "";
         this.$toast.show("Datos actualizados con éxito.");
         this.status = "stale";
       } catch (err) {
@@ -174,5 +192,14 @@ h2 {
   word-spacing: -0.3em;
   color: @daybreak-blue-10;
   text-align: center;
+}
+
+.upload-box {
+  width: fit-content;
+  margin: 20px auto;
+  display: flex;
+  &_avatar {
+    margin-right: 15px;
+  }
 }
 </style>
