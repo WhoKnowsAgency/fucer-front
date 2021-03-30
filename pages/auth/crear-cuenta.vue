@@ -28,6 +28,14 @@
             <template #error>El e-mail ingresado es inválido</template>
           </ControlEmail>
 
+          <ControlText
+            id="dni"
+            v-model="dni"
+            label="DNI"
+            icon="credit-card"
+            rules="required"
+          />
+
           <ControlPassword
             id="clave"
             v-model="clave"
@@ -67,6 +75,7 @@ export default {
       email: "",
       clave: "",
       nombre: "",
+      dni: "",
       error: "",
       status: "stale",
     };
@@ -89,6 +98,7 @@ export default {
         this.status = "pending";
         await this.$api.auth.crearCuenta({
           nombre: this.nombre,
+          dni: this.dni,
           email: this.email,
           password: this.clave,
         });

@@ -37,6 +37,14 @@
               <template #error>El e-mail ingresado es inválido</template>
             </ControlEmail>
 
+            <ControlText
+              id="dni"
+              v-model="dni"
+              label="DNI"
+              icon="credit-card"
+              rules="required"
+            />
+
             <ControlPassword
               id="claveNueva"
               v-model="claveNueva"
@@ -113,6 +121,7 @@ export default {
       claveNueva: "",
       claveNuevaConfirmacion: "",
       nombre: this.$auth.user.nombre,
+      dni: this.$auth.user.dni,
       imagen: this.$auth.user.foto.src,
       imagenNueva: "",
       error: "",
@@ -137,13 +146,14 @@ export default {
         this.status = "pending";
         await this.$api.auth.actualizarUsuario({
           nombre: this.nombre,
+          dni: this.dni,
           email: this.email,
           password: this.claveNueva,
           currentPassword: this.claveActual,
           imagen: this.$refs.imagen.$refs.file.files[0],
         });
-        this.$auth.fetchUser();
-        this.imagen = this.$auth.user.imagen.src;
+        await this.$auth.fetchUser();
+        this.imagen = this.$auth.user.foto.src;
         this.nuevaImagen = "";
         this.$toast.show("Datos actualizados con éxito.");
         this.status = "stale";

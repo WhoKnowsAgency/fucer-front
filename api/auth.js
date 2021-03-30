@@ -1,9 +1,10 @@
 const resource = "auth";
 
 export default ($axios) => ({
-  async crearCuenta({ nombre, email, password }) {
+  async crearCuenta({ nombre, email, dni, password }) {
     return await $axios.$post(`api/${resource}/user`, {
       nombre,
+      dni,
       email,
       password,
     });
@@ -15,6 +16,7 @@ export default ($axios) => ({
   },
   async actualizarUsuario({
     nombre,
+    dni,
     email,
     password,
     currentPassword,
@@ -23,6 +25,9 @@ export default ($axios) => ({
     let datos = new FormData();
     if (nombre) {
       datos.append("nombre", nombre);
+    }
+    if (dni) {
+      datos.append("dni", dni);
     }
     if (email) {
       datos.append("email", email);
