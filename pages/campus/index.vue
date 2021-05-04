@@ -19,7 +19,9 @@
 
       <ATabs default-active-key="activos" @change="cargarCursos">
         <ATabPane key="activos" tab="Mis cursos">
-          <p v-if="cursosActivos.length === 0">No tenés cursos activos.</p>
+          <p v-if="cursosActivos.length === 0">
+            No tenés cursos en desarrollo.
+          </p>
           <masonry :cols="{ default: 4, 1070: 3, 710: 2, 400: 1 }" :gutter="10">
             <CardCurso
               v-for="curso in cursosActivos"

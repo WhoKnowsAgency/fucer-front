@@ -32,28 +32,22 @@
           <nav class="menu">
             <ul>
               <li>
-                <a href="">Inicio</a>
+                <NuxtLink to="/">Inicio</NuxtLink>
               </li>
               <li>
-                <a href="">Cursos en curso</a>
+                <NuxtLink to="/cursos#activos">Cursos en desarrollo</NuxtLink>
               </li>
               <li>
-                <a href="">Cursos finalizados</a>
+                <NuxtLink to="/cursos#finalizados">Cursos finalizados</NuxtLink>
               </li>
               <li>
-                <a href="">Campus virtual</a>
+                <NuxtLink to="/campus">Campus virtual</NuxtLink>
               </li>
               <li>
-                <a href="">Institucional</a>
+                <a href="https://fucer.com.ar" target="_blank">Contacto</a>
               </li>
               <li>
-                <a href="">Publicaciones</a>
-              </li>
-              <li>
-                <a href="">Contacto</a>
-              </li>
-              <li>
-                <a href="">FucerNet</a>
+                <a href="https://net.fucer.com.ar" target="_blank">FucerNet</a>
               </li>
             </ul>
           </nav>

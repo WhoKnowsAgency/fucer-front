@@ -15,8 +15,8 @@
             />
           </masonry>
         </ATabPane>
-        <ATabPane key="activos" tab="En curso">
-          <p v-if="cursosActivos.length === 0">No hay cursos en curso.</p>
+        <ATabPane key="activos" tab="En desarrollo">
+          <p v-if="cursosActivos.length === 0">No hay cursos en desarrollo.</p>
           <masonry :cols="{ default: 4, 1000: 3, 700: 2, 400: 1 }" :gutter="10">
             <CardCurso
               v-for="curso in cursosActivos"
