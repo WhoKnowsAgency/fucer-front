@@ -85,7 +85,7 @@ export default {
   ],
 
   axios: {
-    debug: true,
+    debug: false,
     proxy: true,
   },
 
