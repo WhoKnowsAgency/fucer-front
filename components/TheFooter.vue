@@ -55,21 +55,19 @@
           <nav class="redes">
             <ul>
               <li>
-                <!-- TODO: cambiar FB -->
                 <a
                   class="redes-icono es-facebook"
-                  href="https://www.facebook.com/"
+                  href="https://www.facebook.com/fucer.ar"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <span class="sr-only">Facebook</span>
                 </a>
               </li>
-              <!-- TODO: cambiar YT -->
               <li>
                 <a
                   class="redes-icono es-youtube"
-                  href="https://www.youtube.com/"
+                  href="https://www.youtube.com/channel/UCx-XY-ynlx1Ldf80YN97iig"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
