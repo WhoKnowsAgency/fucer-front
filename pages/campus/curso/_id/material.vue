@@ -34,9 +34,10 @@
 </template>
 
 <script>
-import { Breadcrumb, Row, Col, Card, Icon } from "ant-design-vue";
+import { Button, Breadcrumb, Row, Col, Card, Icon } from "ant-design-vue";
 export default {
   components: {
+    AButton: Button,
     ABreadcrumb: Breadcrumb,
     ABreadcrumbItem: Breadcrumb.Item,
     ARow: Row,

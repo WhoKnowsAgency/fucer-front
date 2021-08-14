@@ -15,33 +15,69 @@
         <p class="intro">Visualizá o descargá el certificado de cursada.</p>
       </div>
 
-      <template v-if="curso.certificado">
-        Acá va a estar mi hermoso certificado.
-      </template>
-      <template v-else>
-        <AEmpty>
-          <div slot="description">
-            <h3>Aún no se emitió tu certificado de cursada</h3>
-            <p>Recibirás una notificación cuando puedas acceder.</p>
+      <div class="contenido">
+        <template v-if="certificado">
+          <div>
+            <div class="certificado">
+              <embed
+                title="Certificado de cursada"
+                :src="certificado"
+                frameborder="0"
+              />
+            </div>
+            <AButton
+              :href="certificado"
+              download
+              target="_blank"
+              type="primary"
+              shape="round"
+            >
+              Descargar certificado
+            </AButton>
           </div>
-        </AEmpty>
-      </template>
+        </template>
+        <template v-else>
+          <AEmpty>
+            <div slot="description">
+              <h3>Aún no se emitió tu certificado de cursada</h3>
+              <p>Recibirás una notificación cuando puedas acceder.</p>
+            </div>
+          </AEmpty>
+        </template>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Breadcrumb, Empty } from "ant-design-vue";
+import { Button, Breadcrumb, Empty } from "ant-design-vue";
 export default {
   components: {
+    AButton: Button,
     ABreadcrumb: Breadcrumb,
     ABreadcrumbItem: Breadcrumb.Item,
     AEmpty: Empty,
   },
-  computed: {
-    curso() {
-      return this.$store.state.cursos.byId[this.$route.params.id];
-    },
+  async fetch() {
+    if (!this.$route.params.id) return;
+    try {
+      await this.$store.dispatch("cursos/getById", this.$route.params.id);
+      this.curso = this.$store.state.cursos.byId[this.$route.params.id];
+      this.certificado = await this.$api.certificados.getByCurso(
+        this.$route.params.id
+      );
+    } catch (e) {
+      console.error(e);
+      if (process.client) {
+        this.$router.push({ name: "404" });
+      }
+    }
+  },
+  data() {
+    return {
+      curso: { nombre: "" },
+      certificado: "",
+    };
   },
   head() {
     return {
@@ -73,7 +109,11 @@ h2 {
 
 .intro {
   max-width: 380px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+}
+
+.contenido {
+  max-width: 650px;
 }
 
 .card {
@@ -88,6 +128,19 @@ h2 {
   }
   .btn {
     margin-top: 17px;
+  }
+}
+
+.certificado {
+  width: 100%;
+  height: 0;
+  padding-bottom: (544/720) * 100%;
+  position: relative;
+  margin-bottom: 20px;
+  embed {
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
 }
 

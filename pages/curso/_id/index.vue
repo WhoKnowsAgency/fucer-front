@@ -1,5 +1,5 @@
 <template>
-  <CursoPublico
+  <LayoutsCursoPublico
     :titulo="curso.nombre"
     :volver="{
       to: '/cursos',
@@ -32,7 +32,7 @@
     <template #cuerpo>
       <div class="curso_temario" v-html="curso.temario"></div>
     </template>
-  </CursoPublico>
+  </LayoutsCursoPublico>
 </template>
 
 <script>

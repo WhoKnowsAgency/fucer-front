@@ -1,5 +1,5 @@
 <template>
-  <CursoPublico
+  <LayoutsCursoPublico
     :titulo="curso.nombre"
     :volver="{
       to: `/curso/${curso.id}`,
@@ -7,14 +7,13 @@
     }"
   >
     <template v-if="curso.enlace_inscripcion" #cuerpo>
-      <iframe
+      <embed
         title="Formulario de inscripción"
         width="100%"
         height="400"
         class="curso_inscripcion"
         :src="curso.enlace_inscripcion"
-      >
-      </iframe>
+      />
     </template>
 
     <template v-if="!curso.enlace_inscripcion" #extra>
@@ -24,7 +23,7 @@
         </div>
       </AEmpty>
     </template>
-  </CursoPublico>
+  </LayoutsCursoPublico>
 </template>
 
 <script>

@@ -46,7 +46,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass">
-@import 'sass/components/mensaje.sass'
-</style>
