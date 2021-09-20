@@ -21,7 +21,9 @@
         <div v-if="clase.id_vimeo" class="iframe">
           <iframe
             :title="clase.nombre"
-            :src="`https://player.vimeo.com/video/${clase.id_vimeo}?title=0&byline=0&portrait=0`"
+            :src="`https://player.vimeo.com/video/${clase.id_vimeo}?${
+              clase.hash_vimeo ? 'h=' + clase.hash_vimeo + '&' : ''
+            }title=0&byline=0&portrait=0`"
             style="
               position: absolute;
               top: 0;
