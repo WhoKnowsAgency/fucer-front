@@ -6,15 +6,20 @@
           <NuxtLink to="/campus">Campus</NuxtLink>
         </ABreadcrumbItem>
         <ABreadcrumbItem>
-          <NuxtLink :to="`/campus/curso/${curso.id}`"> Curso </NuxtLink>
+          <NuxtLink :to="`/campus/curso/${curso_id}`"> Curso </NuxtLink>
         </ABreadcrumbItem>
-        <ABreadcrumbItem>Material</ABreadcrumbItem>
+        <ABreadcrumbItem>
+          <NuxtLink :to="`/campus/curso/${curso_id}/material`">
+            Material
+          </NuxtLink>
+        </ABreadcrumbItem>
+        <ABreadcrumbItem>{{ clase.nombre }}</ABreadcrumbItem>
       </ABreadcrumb>
       <div>
         <h1>Material</h1>
         <ARow :gutter="[24, 24]">
           <ACol
-            v-for="material in curso.materiales"
+            v-for="material in clase.materiales"
             :key="material.id"
             span="12"
           >
@@ -25,22 +30,6 @@
                   <AIcon type="arrow-right" />
                 </AButton>
               </a>
-            </ACard>
-          </ACol>
-          <ACol
-            v-for="clase in clases.filter((c) => c.materiales.length)"
-            :key="`material-clase-${clase.id}`"
-            span="12"
-          >
-            <ACard class="card" hoverable>
-              <NuxtLink
-                :to="`/campus/curso/${curso.id}/clase/${clase.id}/material`"
-              >
-                <h3>{{ clase.nombre }}</h3>
-                <AButton class="btn" type="dashed" shape="circle">
-                  <AIcon type="arrow-right" />
-                </AButton>
-              </NuxtLink>
             </ACard>
           </ACol>
         </ARow>
@@ -63,14 +52,18 @@ export default {
   },
   async fetch() {
     if (!this.$route.params.id) return;
-    const id = this.$route.params.id;
+    if (!this.$route.params.clase_id) return;
+    this.curso_id = this.$route.params.id;
     try {
-      const [, clases] = await Promise.all([
-        this.$store.dispatch("cursos/getById", id),
-        this.$api.cursos.clases(id),
-      ]);
-      this.curso = this.$store.state.cursos.byId[id];
-      this.clases = clases;
+      const clases = await this.$api.cursos.clases(this.curso_id);
+      this.clase =
+        clases && clases.find((c) => c.id == this.$route.params.clase_id);
+      if (!this.clase) {
+        if (process.client) {
+          this.$router.push({ name: "404" });
+        }
+        return;
+      }
     } catch (e) {
       console.error(e);
       if (process.client) {
@@ -80,15 +73,16 @@ export default {
   },
   data() {
     return {
-      curso: {
+      curso_id: 0,
+      clase: {
         id: 0,
+        nombre: "",
       },
-      clases: [],
     };
   },
   head() {
     return {
-      title: "Material - " + this.curso.nombre,
+      title: "Material - " + this.clase.nombre,
     };
   },
 };

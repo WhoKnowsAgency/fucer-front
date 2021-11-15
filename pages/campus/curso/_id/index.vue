@@ -52,9 +52,15 @@ export default {
   },
   async fetch() {
     if (!this.$route.params.id) return;
+
+    const id = this.$route.params.id;
     try {
-      await this.$store.dispatch("cursos/getById", this.$route.params.id);
-      this.curso = this.$store.state.cursos.byId[this.$route.params.id];
+      const [, clases] = await Promise.all([
+        this.$store.dispatch("cursos/getById", id),
+        this.$api.cursos.clases(id),
+      ]);
+      this.curso = this.$store.state.cursos.byId[id];
+      this.clases = clases;
     } catch (e) {
       console.error(e);
       if (process.client) {
@@ -97,7 +103,12 @@ export default {
         });
       }
 
-      if (this.curso.materiales && this.curso.materiales.length) {
+      const hayClasesConMaterial = false;
+      this.clases.reduce((total, c) => total + c.materiales.length);
+      if (
+        (this.curso.materiales && this.curso.materiales.length) ||
+        hayClasesConMaterial
+      ) {
         enlaces.push({
           nombre: `Material`,
           to: `${this.curso.id}/material`,

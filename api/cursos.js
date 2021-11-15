@@ -24,4 +24,7 @@ export default ($axios) => ({
       `api/${resource}/${cursoId}/${claseId}/comentarios`
     );
   },
+  async clases(cursoId) {
+    return await $axios.$get(`api/${resource}/${cursoId}/clases`);
+  },
 });
