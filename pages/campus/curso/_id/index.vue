@@ -52,20 +52,23 @@ export default {
   },
   async fetch() {
     if (!this.$route.params.id) return;
-
     const id = this.$route.params.id;
+
     try {
-      const [, clases] = await Promise.all([
-        this.$store.dispatch("cursos/getById", id),
-        this.$api.cursos.clases(id),
-      ]);
+      await this.$store.dispatch("cursos/getById", id);
       this.curso = this.$store.state.cursos.byId[id];
-      this.clases = clases;
     } catch (e) {
       console.error(e);
       if (process.client) {
         this.$router.push({ name: "404" });
+        return;
       }
+    }
+
+    try {
+      this.clases = await this.$api.cursos.clases(id);
+    } catch (e) {
+      console.error(e);
     }
   },
   data() {
@@ -73,6 +76,7 @@ export default {
       curso: {
         id: 0,
       },
+      clases: [],
     };
   },
   computed: {
@@ -103,11 +107,13 @@ export default {
         });
       }
 
-      const hayClasesConMaterial = false;
-      this.clases.reduce((total, c) => total + c.materiales.length);
+      const hayClasesConMaterial = this.clases.reduce(
+        (total, c) => total + c.materiales.length,
+        0
+      );
       if (
-        (this.curso.materiales && this.curso.materiales.length) ||
-        hayClasesConMaterial
+        hayClasesConMaterial ||
+        (this.curso.materiales && this.curso.materiales.length)
       ) {
         enlaces.push({
           nombre: `Material`,

@@ -65,17 +65,20 @@ export default {
     if (!this.$route.params.id) return;
     const id = this.$route.params.id;
     try {
-      const [, clases] = await Promise.all([
-        this.$store.dispatch("cursos/getById", id),
-        this.$api.cursos.clases(id),
-      ]);
+      await this.$store.dispatch("cursos/getById", id);
       this.curso = this.$store.state.cursos.byId[id];
-      this.clases = clases;
     } catch (e) {
       console.error(e);
       if (process.client) {
         this.$router.push({ name: "404" });
+        return;
       }
+    }
+
+    try {
+      this.clases = await this.$api.cursos.clases(id);
+    } catch (e) {
+      console.error(e);
     }
   },
   data() {
