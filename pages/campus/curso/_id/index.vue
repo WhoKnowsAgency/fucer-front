@@ -55,17 +55,19 @@ export default {
 
     const id = this.$route.params.id;
     try {
-      const [, clases] = await Promise.all([
-        this.$store.dispatch("cursos/getById", id),
-        this.$api.cursos.clases(id),
-      ]);
+      await this.$store.dispatch("cursos/getById", id);
       this.curso = this.$store.state.cursos.byId[id];
-      this.clases = clases;
     } catch (e) {
       console.error(e);
       if (process.client) {
         this.$router.push({ name: "404" });
       }
+    }
+
+    try {
+      this.clases = await this.$api.cursos.clases(id);
+    } catch (e) {
+      console.error(e);
     }
   },
   data() {
@@ -73,6 +75,7 @@ export default {
       curso: {
         id: 0,
       },
+      clases: [],
     };
   },
   computed: {
@@ -115,7 +118,7 @@ export default {
         });
       }
 
-      if (this.curso.clases && this.curso.clases.length) {
+      if (this.clases && this.clases.length) {
         enlaces.push({
           nombre: `Grabaciones`,
           to: `${this.curso.id}/grabaciones`,
