@@ -135,7 +135,10 @@ export default {
         });
       }
 
-      if (["en-curso", "finalizado"].includes(this.curso.estado)) {
+      if (
+        ["en-curso", "finalizado"].includes(this.curso.estado) &&
+        !this.curso.sin_certificados
+      ) {
         enlaces.push({
           nombre: `Certificado`,
           to: `${this.curso.id}/certificado`,
