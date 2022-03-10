@@ -21,12 +21,16 @@
         <ARow :gutter="[24, 24]">
           <ACol v-for="enlace in enlaces" :key="enlace.nombre" span="12">
             <ACard class="card" hoverable>
-              <NuxtLink :to="enlace.to">
+              <NuxtLink v-if="enlace.to" :to="enlace.to">
                 <h3>{{ enlace.nombre }}</h3>
                 <AButton class="btn" type="dashed" shape="circle">
                   <AIcon type="arrow-right" />
                 </AButton>
               </NuxtLink>
+              <div v-else :to="enlace.to">
+                <h3>{{ enlace.nombre }}</h3>
+                <p v-if="enlace.texto">{{ enlace.texto }}</p>
+              </div>
             </ACard>
           </ACol>
         </ARow>
@@ -135,14 +139,19 @@ export default {
         });
       }
 
-      if (
-        ["en-curso", "finalizado"].includes(this.curso.estado) &&
-        !this.curso.sin_certificados
-      ) {
-        enlaces.push({
-          nombre: `Certificado`,
-          to: `${this.curso.id}/certificado`,
-        });
+      if (["en-curso", "finalizado"].includes(this.curso.estado)) {
+        if (this.curso.sin_certificados) {
+          enlaces.push({
+            nombre: `Certificado`,
+            texto: `Los certificados de este curso serán emitidos por fuera de FUCER, y lo recibirás vía mail. En caso de no haberlo recibido, no dejes de comunicarte con cursos.`,
+            to: false,
+          });
+        } else {
+          enlaces.push({
+            nombre: `Certificado`,
+            to: `${this.curso.id}/certificado`,
+          });
+        }
       }
 
       return enlaces;
