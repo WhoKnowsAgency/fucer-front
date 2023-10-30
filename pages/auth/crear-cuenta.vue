@@ -18,6 +18,15 @@
             autocomplete="given-name"
           />
 
+          <ControlText
+            id="apellido"
+            v-model="apellido"
+            label="Apellido"
+            icon="user"
+            rules="required"
+            autocomplete="family-name"
+          />
+
           <ControlEmail
             id="email"
             v-model="email"
@@ -75,6 +84,7 @@ export default {
       email: "",
       clave: "",
       nombre: "",
+      apellido: "",
       dni: "",
       error: "",
       status: "stale",
@@ -97,7 +107,7 @@ export default {
       try {
         this.status = "pending";
         await this.$api.auth.crearCuenta({
-          nombre: this.nombre,
+          nombre: this.nombre + " " + this.apellido,
           dni: this.dni,
           email: this.email,
           password: this.clave,
