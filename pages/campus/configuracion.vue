@@ -21,10 +21,10 @@
             <ControlText
               id="nombre"
               v-model="nombre"
-              label="Nombre"
+              label="Nombre y apellido"
               icon="user"
               rules="required"
-              autocomplete="given-name"
+              autocomplete="name"
             />
 
             <ControlEmail
