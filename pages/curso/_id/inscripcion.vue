@@ -29,6 +29,7 @@
 <script>
 import { Empty } from "ant-design-vue";
 export default {
+  auth: false,
   components: {
     AEmpty: Empty,
   },
